@@ -1,0 +1,33 @@
+{
+  "name": "yitictron",
+  "version": "0.0.1",
+  "description": "yitimo's electron app",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron .",
+    "prebuild": "asar pack yitictron app.asar",
+    "build": "electron-packager . yitictron --platform=win32 --out=build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean:build": "npm cache clean && npm run rimraf -- build",
+    "rimraf": "rimraf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yitimo/yitictron.git"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "yitimo <635928008@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yitimo/yitictron/issues"
+  },
+  "homepage": "https://github.com/yitimo/yitictron#readme",
+  "devDependencies": {
+    "asar": "^0.13.0",
+    "electron": "1.6.11",
+    "electron-packager": "^8.7.2",
+    "rimraf": "^2.6.1"
+  }
+}
