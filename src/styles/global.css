@@ -1,0 +1,152 @@
+﻿/*全局样式*/
+html,body{
+    height: 100%;width: 100%;
+    margin: 0;padding: 0;
+}
+div,p{
+    box-sizing:border-box;
+    margin: 0;padding: 0;
+}
+app {
+    font-size: 16px; /* 默认取dpr为1的fontSize */
+}
+[data-dpr="2"] app {
+    font-size: 24px;
+}
+[data-dpr="3"] app {
+    font-size: 32px;
+}
+
+/*******************************************************************/
+.icon20{
+    display: inline-block;
+    height: 20px;width: 20px;
+    margin-bottom: -5px;
+}
+.btn-auto{
+    display: inline-block;padding: 5px 8px;border-radius: 3px;
+}
+.flex{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.flex-1{
+    flex: 1;
+}
+.bg-img{
+    position: absolute;top: 0;left: 0;
+    z-index: -1;right: 0;bottom: 0;
+}
+.icon40{
+    display: inline-block;
+    height: 40px;width: 40px;
+    margin-bottom: -10px;
+}
+.icon120{
+    height: 120px;
+    width: 120px;
+    margin-bottom: -30px;
+}
+.text-large{
+    font-size: 32px;
+}
+.text-big{
+    font-size: 20px;
+}
+.text-common{
+    font-size: 16px;
+}
+.text-small{
+    font-size: 13px;
+}
+/*******************************************************************/
+
+/*圆角*/
+
+/*位置*/
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.center-f {
+    text-align: center;
+}
+.left-f{
+    text-align: left;
+}
+.right-f{
+    text-align: right;
+}
+.zindex20{
+    z-index: 20;
+}
+.zindex21{
+    z-index: 21;
+}
+.zindex22{
+    z-index: 22;
+}
+.zindex23{
+    z-index: 23;
+}
+.zindex50{
+    z-index: 50;
+}
+.zindex51{
+    z-index: 51;
+}
+
+/*颜色*/
+.white {
+    background: #fff;
+}
+.white-f {
+    color: #fff;
+}
+.black-1{
+    background: #4f4f4f;
+}
+.black-1-f{
+    color: #4f4f4f;
+}
+.black-2-f{
+    color: #252525;
+}
+.black-f{
+    color: #000;
+}
+.black{
+    background: #000;
+}
+.gray{
+    background: #aaa;
+}
+.gray-f{
+    color: #aaa;
+}
+.gray-2{
+    color: #f3f3f3;
+}
+.border-0{
+    border: 1px solid #ddd;
+}
+.border-2{
+    border-right: 1px solid #ddd;
+}
+.border-1{
+    border-top: 1px solid #ddd;
+}
+.border-3{
+    border-bottom: 1px solid #ddd;
+}
+.border-4{
+    border-left: 1px solid #ddd;
+}
+
+.mask-1{
+    position: fixed;top: 0;left: 0;right: 0;bottom: 0;
+    background: #000;opacity: 0.7;
+}

@@ -8,17 +8,23 @@ let win
 
 function createWindow () {
   // 创建浏览器窗口。
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: false
+    }
+  })
 
   // 加载应用的 index.html。
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(`${__dirname}/wwwroot`, 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
 
   // 打开开发者工具。
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   // 当 window 被关闭，这个事件会被触发。
   win.on('closed', () => {
