@@ -23,6 +23,12 @@ function createWindow () {
     slashes: true
   }))
 
+  // win.loadURL(url.format({
+  //   pathname: `weibo.yitimo.com`,
+  //   protocol: 'http:',
+  //   slashes: true
+  // }))
+
   // 不设置菜单
   Menu.setApplicationMenu(null)
 

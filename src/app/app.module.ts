@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 }, false);
 import 'hammerjs';
 
+// window['nodeRequire'] = require;
+// delete window.require;
+// delete window.exports;
+// delete window.module;
+
 import '../styles/global.scss';
 import '../styles/global.css';
 import '../styles/icon.css';
@@ -41,4 +46,8 @@ import '../styles/icon.css';
   ],
   entryComponents: [DialogPopupComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    //
+  }
+}
