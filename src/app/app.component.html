@@ -1,0 +1,15 @@
+<div class="flex-column">
+    <md-toolbar color="accent">
+        <span (click)="sidenav.open()">
+            Yitibo!
+        </span>
+        <span class="ytb-fill-remaining-space"></span>
+        <ytb-userbar></ytb-userbar>
+    </md-toolbar>
+    <md-sidenav-container class="body">
+        <md-sidenav class="ytb-slidemenu" #sidenav>
+            <a md-button [ngClass]="{'active': routerCheck('home')}" routerLink="../home"><md-icon>home</md-icon> 首页</a>
+        </md-sidenav>
+        <router-outlet></router-outlet>
+    </md-sidenav-container>
+</div>

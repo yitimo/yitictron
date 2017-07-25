@@ -1,0 +1,7 @@
+<div class="body" *ngIf="data">
+    <div class="text">
+        {{data?.user.name}}: 
+        {{data?.text}}
+    </div>
+    <simg [thumbnail]="data?.thumbnail_pic" [bmiddle]="data?.bmiddle_pic" [original]="data?.original_pic" [picIds]="data?.pic_urls"></simg> <!--配图信息-->
+</div>

@@ -1,17 +1,24 @@
-/**
- * AppComponent 根组件
- * 负责：
- *    1. 配置<router-outlet>
- *    2. 配置全局组件
- */
-
-import { Component } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'yitictron',
-    template: `
-    <router-outlet></router-outlet>
-    `,
-    providers: []
+  selector: 'app',
+  encapsulation: ViewEncapsulation.None,
+  templateUrl: `./app.component.html`,
+  styleUrls: [`./app.component.css`]
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(
+    private router: Router
+  ) {}
+  public routerCheck(url) {
+    if (url === 'home') {
+      return this.router.url === '/' || this.router.url.indexOf(url) >= 0;
+    }
+    return this.router.url.indexOf(url) >= 0;
+  }
+}

@@ -4,3 +4,4 @@ wwwroot
 compiler
 dist
 dll
+.awcache

@@ -1,35 +1,44 @@
-/**
- * AppModule 根模块
- * 负责：
- *      1. 平台引导模块引入
- *      2. 核心模块引入
- *      3. 根路由模块引入
- *      4. 运行环境声明
- *      5. 根组件申明
- */
-
-import { ENV_PROVIDERS } from './environment';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app.route';
+import { NgModule, ApplicationRef } from '@angular/core';
+import { RouterModule, PreloadAllModules } from '@angular/router';
+import { ENV_PROVIDERS } from './environment';
+import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
-import { HomeIndexComponent } from './home/index/home-index.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule, DialogPopupComponent } from './-shared';
+import { CoreModule } from './-core';
 
+import { HomeComponent, HomeService } from './home';
+
+import * as FastClick from 'fastclick';
+document.addEventListener('DOMContentLoaded', () => {
+    FastClick.attach(document.body);
+    document.removeEventListener('DOMContentLoaded');
+    console.log('fast click configured');
+}, false);
+import 'hammerjs';
+
+import '../styles/global.scss';
 import '../styles/global.css';
-// tslint:disable-next-line:no-var-requires
-const FastClick = require('fastclick');
-FastClick.attach(document.body);
+import '../styles/icon.css';
 
 @NgModule({
-    bootstrap: [AppComponent],
-    declarations: [AppComponent, HomeIndexComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule
-    ],
-    providers: [ENV_PROVIDERS]
+  bootstrap: [ AppComponent ],
+  declarations: [
+    AppComponent,
+    HomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(ROUTES, {useHash: true}),
+    BrowserAnimationsModule,
+    SharedModule,
+    CoreModule
+  ],
+  providers: [
+    ENV_PROVIDERS,
+    HomeService
+  ],
+  entryComponents: [DialogPopupComponent]
 })
-export class AppModule { }
+export class AppModule {}

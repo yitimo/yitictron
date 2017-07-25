@@ -1,3 +1,6 @@
+/**
+ * Angular bootstrapping
+ */
 import { platformBrowser } from '@angular/platform-browser';
 import { decorateModuleRef } from './app/environment';
 /**
@@ -15,10 +18,6 @@ export function main(): Promise<any> {
     .catch((err) => console.error(err));
 }
 
-function _domReadyHandler() {
-  document.removeEventListener('DOMContentLoaded', _domReadyHandler, false);
-  main();
-}
 switch (document.readyState) {
   case 'loading':
     document.addEventListener('DOMContentLoaded', _domReadyHandler, false);
@@ -27,4 +26,9 @@ switch (document.readyState) {
   case 'complete':
   default:
     main();
+}
+
+function _domReadyHandler() {
+  document.removeEventListener('DOMContentLoaded', _domReadyHandler, false);
+  main();
 }
