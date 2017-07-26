@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, Menu, remote} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -12,7 +12,7 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: false
+      nodeIntegration: true
     }
   })
 
@@ -22,12 +22,6 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-
-  // win.loadURL(url.format({
-  //   pathname: `weibo.yitimo.com`,
-  //   protocol: 'http:',
-  //   slashes: true
-  // }))
 
   // 不设置菜单
   Menu.setApplicationMenu(null)
