@@ -1,29 +1,7 @@
-.flex-column{
-    position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-}
-.body{
-    flex: 1;
-    box-sizing: border-box;
-    -webkit-overflow-scrolling: touch;
-    overflow-y: auto;
-}
-.ytb-fill-remaining-space{
-    flex: 1;
-}
-.ytb-slidemenu{
-  width: 200px;
-  background: #f3f3f3;
-  color: #4f4f4f;
-}
-.ytb-slidemenu a{
-    width: 100%;text-align: left;
-}
-.ytb-slidemenu a.active{
-    color: #ff4081;
-    background: #ddd;
+.ytc-sidemenu{
+    min-width: 50px;
+    max-width: 300px;
+    background: #4f4f4f;
+    color: #fff;
+    white-space: nowrap;overflow: hidden;
 }

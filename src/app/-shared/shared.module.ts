@@ -10,17 +10,18 @@ import { StatusUserComponent } from './status-card/user/status-user.component';
 import { SSexPipe } from './status-card/user/ssex.pipe';
 import { DialogPopupComponent } from './popup/dialog.component';
 import { YTBPullDirective } from './ytb-pull/ytb-pull.component';
+import { SideMenuComponent } from './ytc-sidemenu/ytc-sidemenu.component';
 
 @NgModule({
     declarations: [
         UserBarComponent, StatusCardComponent, StatusImgComponent,
         StatusTextComponent, StatusRetweetedComponent, StatusUserComponent,
-        SSexPipe, DialogPopupComponent, YTBPullDirective
+        SSexPipe, DialogPopupComponent, YTBPullDirective, SideMenuComponent
     ],
     imports: [ CommonModule, MaterialModule ],
     exports: [
         CommonModule, MaterialModule, YTBPullDirective,
-        UserBarComponent, StatusCardComponent
+        UserBarComponent, StatusCardComponent, SideMenuComponent
     ],
     providers: [],
 })

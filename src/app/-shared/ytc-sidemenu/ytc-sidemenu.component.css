@@ -1,0 +1,12 @@
+li{
+    padding: 12px;
+    color: #ddd;
+    margin: 0 6px;
+}
+li:hover{
+    color: #fff;
+    cursor: pointer;
+}
+li.flex-1{
+    cursor: initial;
+}

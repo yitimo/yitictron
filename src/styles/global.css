@@ -1,18 +1,26 @@
-html, body, app {
+html, body, yitictron {
     height: 100%;
 }
 html, body, div, ul, li, p {
     margin: 0;padding: 0;
     box-sizing: border-box;
 }
+li{
+    list-style: none;
+}
 .black-f-2{
     color: #4f4f4f;
 }
 .flex{
-    display: -webkit-box;
-    display: -webkit-flex;
     display: flex;
     position: relative;
+    width: 100%;
+}
+.flex-y{
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    height: 100%;
 }
 .flex-1{
     flex: 1;

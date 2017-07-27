@@ -6,7 +6,7 @@ import {
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app',
+  selector: 'yitictron',
   encapsulation: ViewEncapsulation.None,
   templateUrl: `./app.component.html`,
   styleUrls: [`./app.component.css`]
