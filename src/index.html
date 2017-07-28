@@ -4,6 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yitibo!</title>
+  <script>
+    try {
+      window.ytcFs = require('fs');
+      window.ytcHttp = require('http');
+      window.ytcHttps = require('https');
+    } catch(e) {
+      console.log(e);
+      console.log('native node disabled!');
+    }
+  </script>
   <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
   <script src="/webpack-dev-server.js"></script>
   <% } %>

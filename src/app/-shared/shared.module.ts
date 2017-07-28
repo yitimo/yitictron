@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserBarComponent } from './user-bar.component';
 import { MaterialModule } from '../-material/material.module';
@@ -18,7 +19,7 @@ import { SideMenuComponent } from './ytc-sidemenu/ytc-sidemenu.component';
         StatusTextComponent, StatusRetweetedComponent, StatusUserComponent,
         SSexPipe, DialogPopupComponent, YTBPullDirective, SideMenuComponent
     ],
-    imports: [ CommonModule, MaterialModule ],
+    imports: [ CommonModule, RouterModule, MaterialModule ],
     exports: [
         CommonModule, MaterialModule, YTBPullDirective,
         UserBarComponent, StatusCardComponent, SideMenuComponent
