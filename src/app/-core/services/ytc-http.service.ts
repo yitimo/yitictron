@@ -20,38 +20,90 @@ export class YTCHttpService {
             });
         }};
     }
-    public Get(url: string, options?: Options): Promise<any> {
-        return new Promise((resolve, reject) => {
-            let urlParse = this.urlParse(url);
+    public Get(url: string, _headers?: any): Promise<any> {
+        let urlParse = this.urlParse(url);
+        if (urlParse.https) {
+            return this._https({
+                hostname: urlParse.hostname,
+                path: urlParse.path,
+                method: 'GET',
+                headers: _headers || undefined
+            });
+        } else {
             return this._http({
                 hostname: urlParse.hostname,
                 path: urlParse.path,
                 method: 'GET',
-                headers: options ? options.headers : undefined
+                headers: _headers || undefined
             });
+        }
+    }
+    public Post(url: string, data?: string, _headers?: any): Promise<any> {
+        let urlParse = this.urlParse(url);
+        if (urlParse.https) {
+            return this._https({
+                hostname: urlParse.hostname,
+                path: urlParse.path,
+                method: 'POST',
+                headers: _headers || undefined
+            }, data);
+        } else {
+            return this._http({
+                hostname: urlParse.hostname,
+                path: urlParse.path,
+                method: 'POST',
+                headers: _headers || undefined
+            }, data);
+        }
+    }
+    public Post163(_path, _method, data): Promise<any> {
+        return new Promise((resolve, reject) => {
+            let req = this.http.request({
+                hostname: 'music.163.com',
+                path: _path,
+                method: _method,
+                headers: {
+                    'Cookie': 'appver=2.0.2',
+                    'Referer': 'http://music.163.com',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Length': data.length
+                }
+            }, (res) => {
+                res.setEncoding('utf8');
+                res.on('data', (chunk) => {
+                    resolve(chunk);
+                });
+                res.on('error', (chunk) => {
+                    reject(chunk);
+                });
+            });
+            req.write(data);
+            req.end();
         });
     }
-    public Post(url: string, data?: object, options?: Options): Promise<any> {
-        let urlParse = this.urlParse(url);
-        return this._https({
-            hostname: urlParse.hostname,
-            path: urlParse.path,
-            method: 'POST',
-            headers: options ? options.headers : undefined
-        }, data);
-    }
     /*
-    hostname: 'music.163.com',
-    path: '/api/search/get/',
-    method: 'POST',
-    headers: {
-        'Cookie': 'appver=2.0.2',
-        'Referer': 'http://music.163.com',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Length': `s=玫瑰色的你&limit=20&type=1&offset=0`.length
-    }
+    this.http = require('http');
+    console.log(this.http);
+    let req = this.http.request({
+        hostname: 'music.163.com',
+        path: '/api/search/get/',
+        method: 'POST',
+        headers: {
+            'Cookie': 'appver=2.0.2',
+            'Referer': 'http://music.163.com',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Length': `s=玫瑰色的你&limit=20&type=1&offset=0`.length
+        }
+    }, (res) => {
+    res.setEncoding('utf8');
+    res.on('data', (chunk) => {
+        console.log(chunk);
+    });
+    });
+    req.write(`s=玫瑰色的你&limit=20&type=1&offset=0`);
+    req.end();
     */
-    private _http(option: ReqOptions, data?: Object): Promise<any> {
+    private _http(option: ReqOptions, data?: string): Promise<any> {
         return new Promise((resolve, reject) => {
             let req = this.http.request(option, (res) => {
                 res.setEncoding('utf8');
@@ -63,12 +115,12 @@ export class YTCHttpService {
                 });
             });
             if (data) {
-                req.write(JSON.stringify(data));
+                req.write(data);
             }
             req.end();
         });
     }
-    private _https(option: ReqOptions, data?: Object): Promise<any> {
+    private _https(option: ReqOptions, data?: string): Promise<any> {
         return new Promise((resolve, reject) => {
             let req = this.https.request(option, (res) => {
                 res.setEncoding('utf8');
@@ -84,7 +136,7 @@ export class YTCHttpService {
                 });
             });
             if (data) {
-                req.write(JSON.stringify(data));
+                req.write(data);
             }
             req.end();
         });
@@ -115,7 +167,6 @@ export class YTCHttpService {
 
 interface ReqOptions {
     hostname: string; // api.yitimo.com
-    port?: number; // 80
     path?: string; // /oauth
     method?: string; // GET
     headers?: object; // {'Content-Type': 'application/json'}

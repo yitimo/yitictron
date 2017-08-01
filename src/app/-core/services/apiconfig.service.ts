@@ -35,7 +35,7 @@ export class ConfigService {
                     }
                     try {
                         let token = JSON.parse(data);
-                        if (token.access_token && token.expires_in > 10) {
+                        if (token.access_token && token.expires_in > 70000) {
                             res(token);
                         } else {
                             throw 'token 无效';

@@ -3,6 +3,12 @@ li{
     color: #ddd;
     margin: 0 6px;
 }
+li:active{
+    outline: none;
+}
+li:visited{
+    outline: none;
+}
 li:hover{
     color: #fff;
     cursor: pointer;
