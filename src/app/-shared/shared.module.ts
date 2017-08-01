@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { UserBarComponent } from './user-bar.component';
 import { MaterialModule } from '../-material/material.module';
 import { StatusCardComponent } from './status-card/status-card.component';
@@ -22,7 +23,8 @@ import { SideMenuComponent } from './ytc-sidemenu/ytc-sidemenu.component';
     imports: [ CommonModule, RouterModule, MaterialModule ],
     exports: [
         CommonModule, MaterialModule, YTBPullDirective,
-        UserBarComponent, StatusCardComponent, SideMenuComponent
+        UserBarComponent, StatusCardComponent, SideMenuComponent,
+        FormsModule
     ],
     providers: [],
 })

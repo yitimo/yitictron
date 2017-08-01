@@ -7,6 +7,7 @@ import { N163Service } from './163.service';
     styleUrls: ['./163.component.css']
 })
 export class N163Component implements OnInit {
+    public words: string;
     constructor(
         private http: YTCHttpService,
         private n163: N163Service
@@ -16,8 +17,14 @@ export class N163Component implements OnInit {
         //
     }
 
+    public onEnter(e: KeyboardEvent) {
+        if (e.code === 'Enter') {
+            console.log(this.words);
+        }
+    }
+
     public tryReq() {
-        this.n163.Post('/api/search/get/', 's=玫瑰色的你&limit=20&type=1&offset=0').then((res) => {
+        this.n163.Search('浮夸', []).then((res) => {
             console.log(res);
         }).catch((err) => {
             console.log(err);
