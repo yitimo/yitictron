@@ -4,6 +4,7 @@ html, body, yitictron {
 html, body, div, ul, li, p {
     margin: 0;padding: 0;
     box-sizing: border-box;
+    word-break: break-all;
 }
 li{
     list-style: none;

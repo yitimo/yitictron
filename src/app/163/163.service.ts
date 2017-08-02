@@ -15,7 +15,9 @@ export class N163Service {
     }
     private search(_path, _data): Promise<any> {
         return new Promise((resolve, reject) => {
-            let http = require('http');
+            let http = window['ytcHttp'] || {request: () => {
+                reject('native node http disabled !');
+            }};
             let req = http.request({
                 hostname: 'music.163.com',
                 path: _path,
@@ -27,9 +29,21 @@ export class N163Service {
                     'Content-Length': _data.length
                 }
             }, (res) => {
+                let data = '';
                 res.setEncoding('utf8');
                 res.on('data', (chunk) => {
-                    console.log(chunk);
+                    data += chunk;
+                });
+                res.on('end', (chunk) => {
+                    let _res = JSON.parse(data);
+                    if (_res.code === 200) {
+                        resolve(_res.result);
+                    } else {
+                        reject(_res.msg || _res);
+                    }
+                });
+                res.on('error', (chunk) => {
+                    reject('请求出错');
                 });
             });
             req.write(_data);

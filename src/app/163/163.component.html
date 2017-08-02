@@ -1,6 +1,10 @@
 <div class="flex-y">
-    <md-input-container color="accent" class="n163-search">
-        <input mdInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
-    </md-input-container>
-    <router-outlet></router-outlet>
+    <div class="n163-search" [@search]="routeCheck()">
+        <md-input-container color="accent">
+            <input mdInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
+        </md-input-container>
+    </div>
+    <div class="n163-body">
+        <router-outlet></router-outlet>
+    </div>
 </div>
