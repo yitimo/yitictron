@@ -1,0 +1,18 @@
+.song{
+    border-bottom: 1px solid #ddd;
+    padding:  6px 12px;cursor: default;
+}
+.song:first-of-type{
+    border-top: 1px solid #ddd;
+    color: #969696;padding: 0 12px;
+}
+.song:hover{
+    background: #f3f3f3;
+}
+.song > div{
+    padding: 6px 12px;
+    white-space: nowrap;overflow: hidden;
+}
+.song > div:not(:first-of-type){
+    width: 25%;max-width: 200px;min-width: 90px;
+}

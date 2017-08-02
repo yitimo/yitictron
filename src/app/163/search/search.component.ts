@@ -10,7 +10,9 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 })
 export class SearchComponent implements OnInit {
     public words: string;
-    public tempResult: string;
+    public songs: any[];
+    public songCount: number;
+    public page: number;
     constructor(
         private aRoute: ActivatedRoute,
         private n163: N163Service,
@@ -21,13 +23,24 @@ export class SearchComponent implements OnInit {
         this.aRoute.params.subscribe((params) => {
             this.words = params['words'] || '';
             if (this.words.length) {
-                this.n163.Search(this.words).then((res) => {
-                    console.log(res);
-                    this.tempResult = JSON.stringify(res);
+                this.page = 0;
+                this.n163.Search(this.words, [1, this.page]).then((res) => {
+                    this.songs = res.songs;
+                    this.songCount = res.songCount;
                 }).catch((err) => {
                     let dialogRef = this.dialog.open(DialogPopupComponent, {data: {msg: err}});
                 });
             }
+        });
+    }
+
+    public pageChange(e) {
+        this.page = e.pageIndex;
+        this.n163.Search(this.words, [1, this.page]).then((res) => {
+            this.songs = res.songs;
+            this.songCount = res.songCount;
+        }).catch((err) => {
+            let dialogRef = this.dialog.open(DialogPopupComponent, {data: {msg: err}});
         });
     }
 }

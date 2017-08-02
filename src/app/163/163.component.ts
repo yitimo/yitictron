@@ -9,14 +9,14 @@ import { N163Service } from './163.service';
     styleUrls: ['./163.component.css'],
     animations: [
         trigger('search', [
-            state('middle', style({top: '50%', transform: 'translateY(-50%)'})),
-            state('top', style({top: 0, transform: 'translateY(0)'})),
+            state('middle', style({top: '50%', left: '50%', transform: 'translate(-50%, -50%)'})),
+            state('top', style({top: 0, left: '50%', transform: 'translate(-50%, 0)'})),
             transition('middle => top', [
-                style({top: 0, transform: 'translateY(0)'}),
+                style({top: 0, left: '50%', transform: 'translate(-50%, 0)'}),
                 animate('0.5s linear')
             ]),
             transition('top => middle', [
-                animate('0.5s linear', style({top: 0, transform: 'translateY(0)'}))
+                animate('0.5s linear', style({top: 0, left: '50%', transform: 'translate(-50%, 0)'}))
             ])
         ])
     ]
@@ -41,13 +41,5 @@ export class N163Component implements OnInit {
         if (e.code === 'Enter') {
             this.router.navigate(['/163/search', this.words || '']);
         }
-    }
-
-    public tryReq() {
-        this.n163.Search('浮夸', []).then((res) => {
-            console.log(res);
-        }).catch((err) => {
-            console.log(err);
-        });
     }
 }

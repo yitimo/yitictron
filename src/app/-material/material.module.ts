@@ -3,11 +3,14 @@ import {
   MdSidenavModule, MdButtonModule, MdMenuModule,
   MdToolbarModule, MdDialogModule, MdGridListModule,
   MdIconModule, MdProgressBarModule, MdTooltipModule,
-  MdInputModule
+  MdInputModule, MdPaginatorModule
 } from '@angular/material';
 
 @NgModule({
-  exports: [MdSidenavModule, MdButtonModule, MdMenuModule, MdToolbarModule, MdDialogModule,
-  MdGridListModule, MdIconModule, MdProgressBarModule, MdTooltipModule, MdInputModule]
+  exports: [
+    MdSidenavModule, MdButtonModule, MdMenuModule, MdToolbarModule, MdDialogModule,
+    MdGridListModule, MdIconModule, MdProgressBarModule, MdTooltipModule, MdInputModule,
+    MdPaginatorModule
+  ]
 })
 export class MaterialModule {}

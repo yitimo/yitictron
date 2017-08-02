@@ -5,13 +5,17 @@ export class N163Service {
     /**
      * 超级搜索
      * @param s 关键词
-     * @param options [搜索类型, 偏移, 上限]
+     * @param options [搜索类型, 页码, 每页条目]
      */
     public Search(s: string, options?: any[]): Promise<any> {
         if (!options) {
             options = [];
         }
-        return this.search(`/api/search/get/`, `s=${s}&limit=${options[2] || 15}&type=${options[0] || 1}&offset=${options[1] || 0}`);
+        return this.search(`/api/search/get/`, `s=${s}&limit=${((options[1] || 0) + 1) * (options[2] || 15)}&type=${
+            options[0] || 1}&offset=0`).then((res) => {
+                res.songs.splice(0, (options[1] || 0) * (options[2] || 15));
+                return res;
+            });
     }
     private search(_path, _data): Promise<any> {
         return new Promise((resolve, reject) => {
