@@ -1,20 +1,25 @@
 <div class="flex-y">
-    <div class="flex-1">
-        <div class="flex song">
-            <div class="flex-1">歌曲</div>
-            <div>歌手</div>
-            <div>专辑</div>
-        </div>
-        <div class="flex song" *ngFor="let song of songs">
-            <div class="flex-1">{{song.name}}</div>
-            <div>
-                <span *ngFor="let art of song.artists;let i=index"><span *ngIf="i > 0"> / </span>{{art.name}}</span>
+    <md-input-container class="search-bar" color="accent">
+        <input mdInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
+    </md-input-container>
+    <div class="flex-1 flex-y">
+        <div class="flex-1 scroll">
+            <div class="flex song">
+                <div class="flex-1">歌曲</div>
+                <div>歌手</div>
+                <div>专辑</div>
             </div>
-            <div>{{song.album.name}}</div>
+            <div class="flex song" *ngFor="let song of songs">
+                <div class="flex-1">{{song.name}}</div>
+                <div>
+                    <span *ngFor="let art of song.artists;let i=index"><span *ngIf="i > 0"> / </span>{{art.name}}</span>
+                </div>
+                <div>{{song.album.name}}</div>
+            </div>
         </div>
+        <md-paginator [pageIndex]="page" [length]="songCount"
+            [pageSize]="15"
+            (page)="pageChange($event)">
+        </md-paginator>
     </div>
-    <md-paginator [pageIndex]="page" [length]="songCount"
-        [pageSize]="15"
-        (page)="pageChange($event)">
-    </md-paginator>
 </div>

@@ -1,8 +1,1 @@
-<div class="flex-y">
-    <md-input-container class="n163-search" [@search]="routeCheck()" color="accent">
-        <input mdInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
-    </md-input-container>
-    <div class="n163-body">
-        <router-outlet></router-outlet>
-    </div>
-</div>
+<router-outlet></router-outlet>

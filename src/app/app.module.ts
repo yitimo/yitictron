@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule, DialogPopupComponent } from './-shared';
 import { CoreModule } from './-core';
 import { QiniuModule } from './qiniu';
+import { N163Module } from './163';
 import { HomeComponent, HomeService } from './home';
 
 import * as FastClick from 'fastclick';
@@ -34,7 +35,8 @@ import '../styles/icon.css';
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
-    QiniuModule
+    QiniuModule,
+    N163Module
   ],
   providers: [
     ENV_PROVIDERS,

@@ -6,13 +6,13 @@ import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
     {
-        path: '',
+        path: '163',
         component: N163Component,
         children: [
-            { path: 'search/:words', component: SearchComponent }
+            { path: '', component: SearchComponent },
+            { path: 'search', component: SearchComponent }
         ]
-    },
-    { path: '**', component: N163Component }
+    }
 ];
 
 @NgModule({

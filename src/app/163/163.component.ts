@@ -32,14 +32,4 @@ export class N163Component implements OnInit {
     public ngOnInit() {
         //
     }
-
-    public routeCheck() {
-        return this.router.url.split('163')[1].length > 1 ? 'top' : 'middle';
-    }
-
-    public onEnter(e: KeyboardEvent) {
-        if (e.code === 'Enter') {
-            this.router.navigate(['/163/search', this.words || '']);
-        }
-    }
 }

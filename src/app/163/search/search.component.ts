@@ -20,8 +20,11 @@ export class SearchComponent implements OnInit {
     ) {}
 
     public ngOnInit() {
-        this.aRoute.params.subscribe((params) => {
-            this.words = params['words'] || '';
+        //
+    }
+
+    public onEnter(e: KeyboardEvent) {
+        if (e.code === 'Enter') {
             if (this.words.length) {
                 this.page = 0;
                 this.n163.Search(this.words, [1, this.page]).then((res) => {
@@ -31,7 +34,7 @@ export class SearchComponent implements OnInit {
                     let dialogRef = this.dialog.open(DialogPopupComponent, {data: {msg: err}});
                 });
             }
-        });
+        }
     }
 
     public pageChange(e) {
