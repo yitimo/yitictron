@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule, DialogPopupComponent } from './-shared';
 import { CoreModule } from './-core';
-
+import { QiniuModule } from './qiniu';
 import { HomeComponent, HomeService } from './home';
 
 import * as FastClick from 'fastclick';
@@ -33,7 +33,8 @@ import '../styles/icon.css';
     RouterModule.forRoot(ROUTES, {useHash: true}),
     BrowserAnimationsModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    QiniuModule
   ],
   providers: [
     ENV_PROVIDERS,
