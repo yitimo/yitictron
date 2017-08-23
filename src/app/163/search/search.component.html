@@ -1,8 +1,11 @@
 <div class="flex-y">
-    <md-input-container class="search-bar" color="accent">
+    <md-input-container class="init search-bar" color="accent" *ngIf="state === 'init'">
         <input mdInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
     </md-input-container>
-    <div class="flex-1 flex-y">
+    <md-input-container class="search-bar" color="accent" *ngIf="state !== 'init'">
+        <input mdInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
+    </md-input-container>
+    <div class="flex-1 flex-y" *ngIf="state !== 'init'">
         <div class="flex-1 scroll">
             <div class="flex song">
                 <div class="flex-1">歌曲</div>
@@ -10,7 +13,11 @@
                 <div>专辑</div>
             </div>
             <div class="flex song" *ngFor="let song of songs">
-                <div class="flex-1">{{song.name}}</div>
+                <div class="flex-1">
+                    {{song.name}}
+                    <span class="option">收藏</span>
+                    <span class="option">下载</span>
+                </div>
                 <div>
                     <span *ngFor="let art of song.artists;let i=index"><span *ngIf="i > 0"> / </span>{{art.name}}</span>
                 </div>

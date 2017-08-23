@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class N163Service {
+    public Download(id) {
+        // http://m1.music.126.net/[encrypted_song_id]/[song_dfsId].mp3
+    }
     /**
      * 超级搜索
      * @param s 关键词

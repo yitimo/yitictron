@@ -13,11 +13,14 @@ export class SearchComponent implements OnInit {
     public songs: any[];
     public songCount: number;
     public page: number;
+    public state: string;
     constructor(
         private aRoute: ActivatedRoute,
         private n163: N163Service,
         public dialog: MdDialog
-    ) {}
+    ) {
+        this.state = 'init';
+    }
 
     public ngOnInit() {
         //
@@ -26,14 +29,19 @@ export class SearchComponent implements OnInit {
     public onEnter(e: KeyboardEvent) {
         if (e.code === 'Enter') {
             if (this.words.length) {
+                this.state = 'searching';
                 this.page = 0;
                 this.n163.Search(this.words, [1, this.page]).then((res) => {
                     this.songs = res.songs;
                     this.songCount = res.songCount;
+                    this.state = 'searched';
                 }).catch((err) => {
                     let dialogRef = this.dialog.open(DialogPopupComponent, {data: {msg: err}});
+                    this.state = 'error';
                 });
             }
+        } else {
+            // 关键词补全 暂时先不做
         }
     }
 
