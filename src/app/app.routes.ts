@@ -1,10 +1,15 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home';
 import { WeiboGuard } from './-core';
 
-export const ROUTES: Routes = [
-  { path: '',      redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',  component: HomeComponent },
-  { path: 'weibo', loadChildren: './weibo/weibo.module#WeiboModule', canActivate: [WeiboGuard] },
-  { path: '163', loadChildren: './163/163.module#N163Module' }
+const ROUTES: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent }
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(ROUTES, {useHash: true})],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}

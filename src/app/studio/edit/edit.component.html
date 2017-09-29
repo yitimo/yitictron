@@ -1,1 +1,26 @@
-<h3>edit Page</h3>
+
+<div class="keyboard">
+    <!-- <div class="black"></div> -->
+    <div class="white" *ngFor="let key of keys | keyskip: baseTone; let i = index" (click)="play(key)">
+        <div>{{key.code}}</div>
+        <div style="flex: 1;"></div>
+        <div>{{key.simple || 'x'}}</div>
+        <div>{{getKeyMap(i)}}</div>
+    </div>
+</div>
+
+<md-radio-group class="oc-type" [(ngModel)]="oscillatorConfig.type">
+    <md-radio-button class="oc-type-item" value="sine">
+        sine
+    </md-radio-button>
+    <md-radio-button class="oc-type-item" value="square">
+        square
+    </md-radio-button>
+    <md-radio-button class="oc-type-item" value="triangle">
+        triangle
+    </md-radio-button>
+    <md-radio-button class="oc-type-item" value="sawtooth">
+        sawtooth
+    </md-radio-button>
+</md-radio-group>
+<span style="padding: 12px;margin: 12px;" *ngFor="let f of added">{{f}}</span>

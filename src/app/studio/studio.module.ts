@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DefaultComponent } from './default';
+import { SharedModule } from '../-shared';
 import { StudioService } from './studio.service';
 import { StudioComponent } from './studio.component';
 import { StudioRoutingModule } from './studio.route';
-import { EditComponent } from './edit';
+import { EditComponent, KeySkipPipe } from './edit';
 import { ListComponent } from './list';
 
 @NgModule({
     declarations: [
         StudioComponent,
         EditComponent,
-        ListComponent
+        ListComponent, KeySkipPipe
     ],
-    imports: [ CommonModule, StudioRoutingModule ],
+    imports: [ SharedModule, StudioRoutingModule ],
     exports: [],
     providers: [
         StudioService
