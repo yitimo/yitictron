@@ -10,13 +10,8 @@ import { CoreModule } from './-core';
 import { QiniuModule } from './qiniu';
 import { N163Module } from './163';
 import { HomeComponent, HomeService } from './home';
+import { NotFoundRoutingModule } from './notfound';
 
-import * as FastClick from 'fastclick';
-document.addEventListener('DOMContentLoaded', () => {
-    FastClick.attach(document.body);
-    document.removeEventListener('DOMContentLoaded');
-    console.log('fast click configured');
-}, false);
 import 'hammerjs';
 
 import '../styles/global.scss';
@@ -36,7 +31,8 @@ import '../styles/icon.css';
     SharedModule,
     CoreModule,
     QiniuModule,
-    N163Module
+    N163Module,
+    NotFoundRoutingModule
   ],
   providers: [
     ENV_PROVIDERS,
