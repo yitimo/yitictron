@@ -1,44 +1,5 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class StudioService {
-    private audioContext: AudioContext;
-    constructor() {
-        this.audioContext = new AudioContext();
-    }
-    public makeSound(frequency: number, oscillatorType: string) {
-        // 创建一个OscillatorNode, 它表示一个周期性波形（振荡），基本上来说创造了一个音调
-        let oscillator = this.audioContext.createOscillator();
-        // 创建一个GainNode,它可以控制音频的总音量
-        let gainNode = this.audioContext.createGain();
-        // 把音量，音调和终节点进行关联
-        oscillator.connect(gainNode);
-        gainNode.connect(this.audioContext.destination);
-        // 指定音调的类型，其他还有square|triangle|sawtooth
-        oscillator.type = <OscillatorType> oscillatorType;
-        // 设置当前播放声音的频率，也就是最终播放声音的调调
-        oscillator.frequency.value = frequency;
-        // 当前时间设置音量为0
-        gainNode.gain.setValueAtTime(0, this.audioContext.currentTime);
-        // 0.01秒后音量为1
-        gainNode.gain.linearRampToValueAtTime(1, this.audioContext.currentTime + 0.01);
-        // 音调从当前时间开始播放
-        oscillator.start(this.audioContext.currentTime);
-        // 1秒内声音慢慢降低，是个不错的停止声音的方法
-        gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioContext.currentTime + 1);
-        // 1秒后完全停止声音
-        oscillator.stop(this.audioContext.currentTime + 1);
-    }
-}
-
-export interface Tone {
-    frequency: number; // 实际决定音调的数值
-    code: string; // 用于表现的音符
-    base: number; // 基数 对应钢琴88键的87个索引
-    simple?: string;
-    rising?: Tone;
-}
-
 export const OscillatorType = {
     SINE: 'sine',
     SQUARE: 'square',
@@ -92,13 +53,13 @@ export const TONES: Tone[] = [
     {frequency: 110.0, code: 'A', base: 24, rising: {frequency: 116.5, code: '#A', base: 25}},
     {frequency: 123.5, code: 'B', base: 26},
 
-    {frequency: 130.8, code: 'c', base: 27, rising: {frequency: 138.6, code: '#c', base: 28}},
-    {frequency: 146.8, code: 'd', base: 29, rising: {frequency: 155.6, code: '#d', base: 30}},
-    {frequency: 164.8, code: 'e', base: 31},
-    {frequency: 174.6, code: 'f', base: 32, rising: {frequency: 185.0, code: '#f', base: 33}},
-    {frequency: 196.0, code: 'g', base: 34, rising: {frequency: 207.7, code: '#g', base: 35}},
-    {frequency: 220.0, code: 'a', base: 36, rising: {frequency: 233.1, code: '#a', base: 37}},
-    {frequency: 246.9, code: 'b', base: 38},
+    {frequency: 130.8, code: 'c', simple: '<1', base: 27, rising: {frequency: 138.6, code: '#c', base: 28}},
+    {frequency: 146.8, code: 'd', simple: '<2', base: 29, rising: {frequency: 155.6, code: '#d', base: 30}},
+    {frequency: 164.8, code: 'e', simple: '<3', base: 31},
+    {frequency: 174.6, code: 'f', simple: '<4', base: 32, rising: {frequency: 185.0, code: '#f', base: 33}},
+    {frequency: 196.0, code: 'g', simple: '<5', base: 34, rising: {frequency: 207.7, code: '#g', base: 35}},
+    {frequency: 220.0, code: 'a', simple: '<6', base: 36, rising: {frequency: 233.1, code: '#a', base: 37}},
+    {frequency: 246.9, code: 'b', simple: '<7', base: 38},
 
     {frequency: 261.6, code: 'c1', simple: '1', base: 39, rising: {frequency: 277.2, code: '#c1', base: 40}},
     {frequency: 293.7, code: 'd1', simple: '2', base: 41, rising: {frequency: 311.1, code: '#d1', base: 42}},
@@ -108,13 +69,13 @@ export const TONES: Tone[] = [
     {frequency: 440.0, code: 'a1', simple: '6', base: 48, rising: {frequency: 466.2, code: '#a1', base: 49}},
     {frequency: 493.9, code: 'b1', simple: '7', base: 50},
 
-    {frequency: 523.3, code: 'c2', base: 51, rising: {frequency: 554.4, code: '#c2', base: 52}},
-    {frequency: 587.3, code: 'd2', base: 53, rising: {frequency: 622.3, code: '#d2', base: 54}},
-    {frequency: 659.3, code: 'e2', base: 55},
-    {frequency: 698.5, code: 'f2', base: 56, rising: {frequency: 740.0, code: '#f2', base: 57}},
-    {frequency: 784.0, code: 'g2', base: 58, rising: {frequency: 830.6, code: '#g2', base: 59}},
-    {frequency: 880.0, code: 'a2', base: 60, rising: {frequency: 932.3, code: '#a2', base: 61}},
-    {frequency: 987.8, code: 'b2', base: 62},
+    {frequency: 523.3, code: 'c2', simple: '>1', base: 51, rising: {frequency: 554.4, code: '#c2', base: 52}},
+    {frequency: 587.3, code: 'd2', simple: '>2', base: 53, rising: {frequency: 622.3, code: '#d2', base: 54}},
+    {frequency: 659.3, code: 'e2', simple: '>3', base: 55},
+    {frequency: 698.5, code: 'f2', simple: '>4', base: 56, rising: {frequency: 740.0, code: '#f2', base: 57}},
+    {frequency: 784.0, code: 'g2', simple: '>5', base: 58, rising: {frequency: 830.6, code: '#g2', base: 59}},
+    {frequency: 880.0, code: 'a2', simple: '>6', base: 60, rising: {frequency: 932.3, code: '#a2', base: 61}},
+    {frequency: 987.8, code: 'b2', simple: '>7', base: 62},
 
     {frequency: 1047, code: 'c3', base: 63, rising: {frequency: 1109, code: '#c3', base: 64}},
     {frequency: 1175, code: 'd3', base: 65, rising: {frequency: 1245, code: '#d3', base: 66}},
@@ -135,3 +96,74 @@ export const TONES: Tone[] = [
     {frequency: 4186, code: 'c5', base: 87},
     {frequency: 0, code: '0', base: 88} // 作为空拍
 ];
+
+@Injectable()
+export class StudioService {
+    private audioContext: AudioContext;
+    private playInterval: any;
+    constructor() {
+        this.audioContext = new AudioContext();
+    }
+    /**
+     * @param book 输入乐谱 字符串形式 1~7表示哆到西 >前缀表示高音 <前缀表示低音 空格表示空拍
+     * @param beat 播放音调的间隔 即节拍 值为每1秒的次数 即1代表每秒1拍
+     */
+    public play(book: string, beat?: number) {
+        let begin = 0;
+        this.playInterval = setInterval(() => {
+            let next;
+            switch (book[begin]) {
+                case undefined:
+                clearInterval(this.playInterval);
+                return;
+                case '>':
+                next = TONES.find((tone) => tone.simple === `>${book[begin + 1]}`) || {frequency: 0};
+                this.makeSound(next.frequency, 'sine');
+                begin += 2;
+                return;
+                case '<':
+                next = TONES.find((tone) => tone.simple === `<${book[begin + 1]}`) || {frequency: 0};
+                this.makeSound(next.frequency, 'sine');
+                begin += 2;
+                return;
+                case ' ':
+                default:
+                next = TONES.find((tone) => tone.simple === book[begin]) || {frequency: 0};
+                this.makeSound(next.frequency, 'sine');
+                begin ++;
+                return;
+            }
+        }, (1 / (beat || 1)) * 1000);
+    }
+    public makeSound(frequency: number, oscillatorType: string) {
+        // 创建一个OscillatorNode, 它表示一个周期性波形（振荡），基本上来说创造了一个音调
+        let oscillator = this.audioContext.createOscillator();
+        // 创建一个GainNode,它可以控制音频的总音量
+        let gainNode = this.audioContext.createGain();
+        // 把音量，音调和终节点进行关联
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        // 指定音调的类型，其他还有square|triangle|sawtooth
+        oscillator.type = <any> oscillatorType;
+        // 设置当前播放声音的频率，也就是最终播放声音的调调
+        oscillator.frequency.value = frequency;
+        // 当前时间设置音量为0
+        gainNode.gain.setValueAtTime(0, this.audioContext.currentTime);
+        // 0.01秒后音量为1
+        gainNode.gain.linearRampToValueAtTime(1, this.audioContext.currentTime + 0.01);
+        // 音调从当前时间开始播放
+        oscillator.start(this.audioContext.currentTime);
+        // 1秒内声音慢慢降低，是个不错的停止声音的方法
+        gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioContext.currentTime + 1);
+        // 1秒后完全停止声音
+        oscillator.stop(this.audioContext.currentTime + 1);
+    }
+}
+
+export interface Tone {
+    frequency: number; // 实际决定音调的数值
+    code: string; // 用于表现的音符
+    base: number; // 基数 对应钢琴88键的87个索引
+    simple?: string;
+    rising?: Tone;
+}

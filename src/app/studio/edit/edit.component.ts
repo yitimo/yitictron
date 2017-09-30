@@ -1,7 +1,9 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Tone, StudioService, OscillatorType, TONES, KEYMAP, KEYSKIP } from '../studio.service';
+import { Http, ResponseContentType } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/map';
 
 @Component({
     templateUrl: './edit.component.html',
@@ -15,7 +17,8 @@ export class EditComponent implements OnInit {
     };
     public pressed: string[];
     constructor(
-        private studio: StudioService
+        private studio: StudioService,
+        private http: Http
     ) {}
     public ngOnInit() {
         this.pressed = [];
@@ -31,7 +34,7 @@ export class EditComponent implements OnInit {
                 } else {
                     this.pressed.push(tone.code);
                 }
-                this.play(tone);
+                this.studio.makeSound(tone.frequency, this.oscillatorConfig.type);
                 return;
             }
             let findSkip = KEYSKIP.find((key) => key.key === event.key);
@@ -42,7 +45,7 @@ export class EditComponent implements OnInit {
             }
             if (event.key === 'space') {
                 // 输入了空拍
-                this.play(this.getTone(88));
+                this.studio.makeSound(0, this.oscillatorConfig.type);
                 return;
             }
         });
@@ -58,15 +61,19 @@ export class EditComponent implements OnInit {
                 return;
             }
         });
+        let duo = TONES.findIndex((tone) => tone.simple === '1');
+        // tslint:disable-next-line:max-line-length
+        this.studio.play('1  23  13 1 3   2  344324       3  45  35 3 5   4  566546       5  123456       6  234567       7  34567>1     >176 3 7 5 >1 ', 4);
+    }
+
+    public makeSound(tone: Tone) {
+        this.studio.makeSound(tone.frequency, this.oscillatorConfig.type);
     }
 
     public getKeyMap(base: number) {
         return KEYMAP.find((key) => key.base === base - this.baseTone);
     }
 
-    public play(tone: Tone) {
-        this.studio.makeSound(tone.frequency, this.oscillatorConfig.type);
-    }
     /**
      * 根据输入的keycode拿到对应的音调 找不到返回空
      * @param key keycode
