@@ -1,26 +1,21 @@
-
-<div class="keyboard">
-    <!-- <div class="black"></div> -->
-    <div class="white" *ngFor="let key of keys | keyskip: baseTone; let i = index" (click)="play(key)">
-        <div>{{key.code}}</div>
-        <div style="flex: 1;"></div>
-        <div>{{key.simple || 'x'}}</div>
-        <div>{{getKeyMap(i)}}</div>
+<div class="keyboard" id="keyboard">
+    <div class="key" *ngFor="let key of wkeys">
+        <div class="white" (click)="play(key)" [ngClass]="{pressed: pressed.indexOf(key.code) >= 0}">
+            <div style="height: 50px;"></div>
+            <div style="flex: 1;display: flex;flex-flow: column;padding: 12px 0;">
+                <div style="flex: 1;"></div>
+                <div>{{key.code}}</div>
+            </div>
+        </div>
+        <div class="black" *ngIf="key.rising" (click)="play(key.rising)" [ngClass]="{pressed: pressed.indexOf(key.rising.code) >= 0}">
+            <div style="flex: 1;"></div>
+            <div>{{key.rising.code}}</div>
+        </div>
     </div>
 </div>
-
-<md-radio-group class="oc-type" [(ngModel)]="oscillatorConfig.type">
-    <md-radio-button class="oc-type-item" value="sine">
-        sine
-    </md-radio-button>
-    <md-radio-button class="oc-type-item" value="square">
-        square
-    </md-radio-button>
-    <md-radio-button class="oc-type-item" value="triangle">
-        triangle
-    </md-radio-button>
-    <md-radio-button class="oc-type-item" value="sawtooth">
-        sawtooth
-    </md-radio-button>
+<md-radio-group class="instrument" [(ngModel)]="oscillatorConfig.type">
+    <md-radio-button value="sine">sine</md-radio-button>
+    <md-radio-button value="square">square</md-radio-button>
+    <md-radio-button value="triangle">triangle</md-radio-button>
+    <md-radio-button value="sawtooth">sawtooth</md-radio-button>
 </md-radio-group>
-<span style="padding: 12px;margin: 12px;" *ngFor="let f of added">{{f}}</span>

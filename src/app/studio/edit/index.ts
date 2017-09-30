@@ -1,1 +1,1 @@
-export { EditComponent, KeySkipPipe } from './edit.component';
+export { EditComponent } from './edit.component';

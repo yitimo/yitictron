@@ -3,14 +3,14 @@ import { SharedModule } from '../-shared';
 import { StudioService } from './studio.service';
 import { StudioComponent } from './studio.component';
 import { StudioRoutingModule } from './studio.route';
-import { EditComponent, KeySkipPipe } from './edit';
+import { EditComponent } from './edit';
 import { ListComponent } from './list';
 
 @NgModule({
     declarations: [
         StudioComponent,
         EditComponent,
-        ListComponent, KeySkipPipe
+        ListComponent
     ],
     imports: [ SharedModule, StudioRoutingModule ],
     exports: [],
