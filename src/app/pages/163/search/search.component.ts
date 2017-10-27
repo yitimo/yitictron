@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { N163Service } from '../163.service';
-import { DialogPopupComponent } from '../../-shared';
+import { DialogPopupComponent } from '../../../-shared';
 import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({

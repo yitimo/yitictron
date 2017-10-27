@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../-shared';
+import { SharedModule } from '../../-shared';
 import { CommonModule } from '@angular/common';
 import { N163RoutingModule } from './163.route';
 import { N163Component } from './163.component';

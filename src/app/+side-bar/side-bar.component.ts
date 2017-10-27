@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector: 'ytc-sidemenu',
-    templateUrl: './ytc-sidemenu.component.html',
-    styleUrls: ['./ytc-sidemenu.component.css'],
+    selector: 'side-bar',
+    templateUrl: './side-bar.component.html',
+    styleUrls: ['./side-bar.component.css'],
     encapsulation: ViewEncapsulation.None
 })
-export class SideMenuComponent implements OnInit {
+export class SideBarComponent implements OnInit {
     constructor() {
         //
     }
