@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+// Material相关
+import {
+    MatSidenavModule, MatButtonModule, MatMenuModule,
+    MatToolbarModule, MatDialogModule, MatGridListModule,
+    MatIconModule, MatProgressBarModule, MatTooltipModule,
+    MatInputModule, MatPaginatorModule, MatRadioModule
+} from '@angular/material';
+
 import { UserBarComponent } from './user-bar.component';
-import { MaterialModule } from '../-material/material.module';
 import { StatusCardComponent } from './status-card/status-card.component';
 import { StatusImgComponent } from './status-card/simg/status-img.component';
 import { StatusTextComponent } from './status-card/text/status-text.component';
@@ -20,11 +26,20 @@ import { SideMenuComponent } from './ytc-sidemenu/ytc-sidemenu.component';
         StatusTextComponent, StatusRetweetedComponent, StatusUserComponent,
         SSexPipe, DialogPopupComponent, YTBPullDirective, SideMenuComponent
     ],
-    imports: [ CommonModule, RouterModule, MaterialModule ],
+    imports: [
+        MatSidenavModule, MatButtonModule, MatMenuModule, MatToolbarModule, MatDialogModule,
+        MatGridListModule, MatIconModule, MatProgressBarModule, MatTooltipModule, MatInputModule,
+        MatPaginatorModule, MatRadioModule,
+
+        CommonModule
+    ],
     exports: [
-        CommonModule, MaterialModule, YTBPullDirective,
-        UserBarComponent, StatusCardComponent, SideMenuComponent,
-        FormsModule
+        MatSidenavModule, MatButtonModule, MatMenuModule, MatToolbarModule, MatDialogModule,
+        MatGridListModule, MatIconModule, MatProgressBarModule, MatTooltipModule, MatInputModule,
+        MatPaginatorModule, MatRadioModule,
+
+        CommonModule, YTBPullDirective, UserBarComponent,
+        StatusCardComponent, SideMenuComponent, FormsModule
     ],
     providers: [],
 })

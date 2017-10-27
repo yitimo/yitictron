@@ -1,10 +1,10 @@
 <div class="flex-y">
-    <md-input-container class="init search-bar" color="accent" *ngIf="state === 'init'">
-        <input mdInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
-    </md-input-container>
-    <md-input-container class="search-bar" color="accent" *ngIf="state !== 'init'">
-        <input mdInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
-    </md-input-container>
+    <mat-input-container class="init search-bar" color="accent" *ngIf="state === 'init'">
+        <input matInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
+    </mat-input-container>
+    <mat-input-container class="search-bar" color="accent" *ngIf="state !== 'init'">
+        <input matInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
+    </mat-input-container>
     <div class="flex-1 flex-y" *ngIf="state !== 'init'">
         <div class="flex-1 scroll">
             <div class="flex song">
@@ -25,9 +25,9 @@
             </div>
             <button (click)="test()">测试</button>
         </div>
-        <md-paginator [pageIndex]="page" [length]="songCount"
+        <mat-paginator [pageIndex]="page" [length]="songCount"
             [pageSize]="15"
             (page)="pageChange($event)">
-        </md-paginator>
+        </mat-paginator>
     </div>
 </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { N163Service } from '../163.service';
 import { DialogPopupComponent } from '../../-shared';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
     templateUrl: './search.component.html',
@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
     constructor(
         private aRoute: ActivatedRoute,
         private n163: N163Service,
-        public dialog: MdDialog
+        public dialog: MatDialog
     ) {
         this.state = 'init';
     }

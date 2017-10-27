@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { DialogPopupComponent } from './popup/dialog.component';
 
 @Component({
     selector: 'ytb-userbar',
     template: `
-        <button md-button [mdMenuTriggerFor]="menu" *ngIf="user">
+        <button mat-button [matMenuTriggerFor]="menu" *ngIf="user">
             <img class="ytb-head" src="/assets/img/yitimo.jpn" />
             Yitimo
         </button>
-        <md-menu #menu="mdMenu" xPosition="before" yPosition="below">
-            <button md-menu-item>个人中心</button>
-            <button md-menu-item>登录检查</button>
-            <button md-menu-item>注销</button>
-        </md-menu>
+        <mat-menu #menu="matMenu" xPosition="before" yPosition="below">
+            <button mat-menu-item>个人中心</button>
+            <button mat-menu-item>登录检查</button>
+            <button mat-menu-item>注销</button>
+        </mat-menu>
     `,
     styles: [`
         .ytb-head{
@@ -24,6 +24,6 @@ import { DialogPopupComponent } from './popup/dialog.component';
 export class UserBarComponent {
     public user;
     constructor(
-        public dialog: MdDialog
+        public dialog: MatDialog
     ) {}
 }
