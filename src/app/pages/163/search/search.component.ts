@@ -32,10 +32,13 @@ export class SearchComponent implements OnInit {
                 this.state = 'searching';
                 this.page = 0;
                 this.n163.Search(this.words, [this.page]).subscribe((res) => {
-                    this.songs = res.songs;
-                    this.songCount = res.songCount;
-                    this.state = 'searched';
-                    console.log(this.songs);
+                    if (res.state) {
+                        this.songs = res.data.songs;
+                        this.songCount = res.data.songCount;
+                    } else {
+                        let dialogRef = this.dialog.open(DialogPopupComponent, {data: {msg: res.msg}});
+                        this.state = 'error';
+                    }
                 }, (err) => {
                     let dialogRef = this.dialog.open(DialogPopupComponent, {data: {msg: err}});
                     this.state = 'error';
@@ -49,8 +52,13 @@ export class SearchComponent implements OnInit {
     public pageChange(e) {
         this.page = e.pageIndex;
         this.n163.Search(this.words, [this.page]).subscribe((res) => {
-            this.songs = res.songs;
-            this.songCount = res.songCount;
+            if (res.state) {
+                this.songs = res.data.songs;
+                this.songCount = res.data.songCount;
+            } else {
+                let dialogRef = this.dialog.open(DialogPopupComponent, {data: {msg: res.msg}});
+                this.state = 'error';
+            }
         }, (err) => {
             let dialogRef = this.dialog.open(DialogPopupComponent, {data: {msg: err}});
             this.state = 'error';

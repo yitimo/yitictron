@@ -19,15 +19,17 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HOST = process.env.HOST || '127.0.0.1';
-const PORT = process.env.PORT || 80;
-const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 3000;
+const PUBLIC = process.env.PUBLIC_DEV || HOST + ':' + PORT;
+const AOT = process.env.BUILD_AOT || helpers.hasNpmFlag('aot');
+const METADATA = {
   host: HOST,
   port: PORT,
+  public: PUBLIC,
   ENV: ENV,
-  HMR: HMR
-});
+  AOT: AOT
+};
 
 
 // const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
@@ -134,12 +136,8 @@ module.exports = function (options) {
        */
       new DefinePlugin({
         'ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR,
-        'process.env': {
-          'ENV': JSON.stringify(METADATA.ENV),
-          'NODE_ENV': JSON.stringify(METADATA.ENV),
-          'HMR': METADATA.HMR,
-        }
+        'process.env.ENV': JSON.stringify(METADATA.ENV),
+        'process.env.NODE_ENV': JSON.stringify(METADATA.ENV)
       }),
 
       // new DllBundlesPlugin({
@@ -205,7 +203,7 @@ module.exports = function (options) {
         options: {
 
         }
-      }),
+      })
 
     ],
 
@@ -220,6 +218,7 @@ module.exports = function (options) {
     devServer: {
       port: METADATA.port,
       host: METADATA.host,
+      public: METADATA.public,
       historyApiFallback: true,
       watchOptions: {
         // if you're using Docker you may need this
@@ -237,8 +236,7 @@ module.exports = function (options) {
         // app.get('/some/path', function(req, res) {
         //   res.json({ custom: 'response' });
         // });
-      },
-      disableHostCheck: true
+      }
     },
 
     /**
