@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Http } from '../../-core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class N163Service {
+    constructor(
+        private http: Http
+    ) {}
     public Download(id) {
         // http://m1.music.126.net/[encrypted_song_id]/[song_dfsId].mp3
     }
@@ -10,51 +16,30 @@ export class N163Service {
      * @param s 关键词
      * @param options [搜索类型, 页码, 每页条目]
      */
-    public Search(s: string, options?: any[]): Promise<any> {
+    public Search(s: string, options?: any[]): Observable<any> {
         if (!options) {
             options = [];
         }
-        return this.search(`/api/search/get/`, `s=${s}&limit=${((options[1] || 0) + 1) * (options[2] || 15)}&type=${
-            options[0] || 1}&offset=0`).then((res) => {
+        return this.request(
+            `http://music.163.com/api/search/get/`,
+            `s=${s}&limit=${((options[1] || 0) + 1) * (options[2] || 15)}&type=${
+            options[0] || 1}&offset=0`).map((res) => {
                 res.songs.splice(0, (options[1] || 0) * (options[2] || 15));
                 return res;
             });
     }
-    private search(_path, _data): Promise<any> {
-        return new Promise((resolve, reject) => {
-            let http = window['ytcHttp'] || {request: () => {
-                reject('native node http disabled !');
-            }};
-            let req = http.request({
-                hostname: 'music.163.com',
-                path: _path,
-                method: 'POST',
+    private request(url, data) {
+        return this.http.post_native(
+            url,
+            data,
+            {
                 headers: {
                     'Cookie': 'appver=2.0.2',
-                    'Referer': 'http://music.163.com',
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Content-Length': _data.length
+                    'Referer': 'http://music.163.com',
+                    'Content-Length': data.length
                 }
-            }, (res) => {
-                let data = '';
-                res.setEncoding('utf8');
-                res.on('data', (chunk) => {
-                    data += chunk;
-                });
-                res.on('end', (chunk) => {
-                    let _res = JSON.parse(data);
-                    if (_res.code === 200) {
-                        resolve(_res.result);
-                    } else {
-                        reject(_res.msg || _res);
-                    }
-                });
-                res.on('error', (chunk) => {
-                    reject('请求出错');
-                });
-            });
-            req.write(_data);
-            req.end();
-        });
+            }
+        );
     }
 }

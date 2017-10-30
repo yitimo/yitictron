@@ -33,5 +33,6 @@ import { YTBPullDirective } from './ytb-pull/ytb-pull.component';
         FormsModule, UserBarComponent
     ],
     providers: [],
+    entryComponents: [DialogPopupComponent]
 })
 export class SharedModule {}

@@ -5,13 +5,13 @@
  * 回调页将使用原生node能力得到微博配置并操作accesstoken
  */
 import { Injectable } from '@angular/core';
-import { YTCHttpService } from './ytc-http.service';
+import { Http } from './http';
 import { ConfigService } from './apiconfig.service';
 
 @Injectable()
 export class OAuthWeiboService {
     constructor(
-        private http: YTCHttpService,
+        private http: Http,
         private config: ConfigService
     ) {}
     public AuthBegin(toPath?: string): Promise<any> {
@@ -47,10 +47,11 @@ export class OAuthWeiboService {
      */
     public AuthCheck(): Promise<any> {
         return this.config.weiboToken().then((res) => {
-            return this.http.Post(`https://api.weibo.com/oauth2/get_token_info?access_token=${res.access_token}`).then((_res) => {
-                res.expires_in = JSON.parse(_res || '{}').expire_in;
-                return this.config.setWeiboToken(res);
-            });
+            return false;
+            // return this.http.Post(`https://api.weibo.com/oauth2/get_token_info?access_token=${res.access_token}`).then((_res) => {
+            //     res.expires_in = JSON.parse(_res || '{}').expire_in;
+            //     return this.config.setWeiboToken(res);
+            // });
         });
     }
 }

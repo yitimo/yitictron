@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { state, transition, animate, style, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
-import { YTCHttpService } from '../../-core';
+import { Http } from '../../-core';
 import { N163Service } from './163.service';
 
 @Component({
@@ -24,7 +24,7 @@ import { N163Service } from './163.service';
 export class N163Component implements OnInit {
     public words: string;
     constructor(
-        private http: YTCHttpService,
+        private http: Http,
         private n163: N163Service,
         private router: Router
     ) {}

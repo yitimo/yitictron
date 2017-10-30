@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
 import { ConfigService } from './services/apiconfig.service';
 import { OAuthWeiboService } from './services/oauth.weibo.service';
-import { YTCHttpService } from './services/ytc-http.service';
+import { Http } from './services/http';
 import { WeiboGuard } from './guards/weibo.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [],
-    imports: [ CommonModule, FormsModule, HttpModule ],
+    imports: [ CommonModule, FormsModule, HttpClientModule ],
     exports: [],
-    providers: [ YTCHttpService, OAuthWeiboService, ConfigService, WeiboGuard ],
+    providers: [ Http, OAuthWeiboService, ConfigService, WeiboGuard ],
 })
 export class CoreModule {}
