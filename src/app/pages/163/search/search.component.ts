@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
             if (this.words.length) {
                 this.state = 'searching';
                 this.page = 0;
-                this.n163.Search(this.words, [1, this.page]).subscribe((res) => {
+                this.n163.Search(this.words, [this.page]).subscribe((res) => {
                     this.songs = res.songs;
                     this.songCount = res.songCount;
                     this.state = 'searched';
@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
 
     public pageChange(e) {
         this.page = e.pageIndex;
-        this.n163.Search(this.words, [1, this.page]).subscribe((res) => {
+        this.n163.Search(this.words, [this.page]).subscribe((res) => {
             this.songs = res.songs;
             this.songCount = res.songCount;
         }, (err) => {

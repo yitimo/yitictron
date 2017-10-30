@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http } from '../../-core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class N163Service {
     constructor(
-        private http: Http
+        private http: Http,
+        private ngHttp: HttpClient
     ) {}
-    public Download(id) {
-        // http://m1.music.126.net/[encrypted_song_id]/[song_dfsId].mp3
-    }
     /**
      * 超级搜索
      * @param s 关键词
@@ -20,13 +19,14 @@ export class N163Service {
         if (!options) {
             options = [];
         }
-        return this.request(
-            `http://music.163.com/api/search/get/`,
-            `s=${s}&limit=${((options[1] || 0) + 1) * (options[2] || 15)}&type=${
-            options[0] || 1}&offset=0`).map((res) => {
-                res.songs.splice(0, (options[1] || 0) * (options[2] || 15));
-                return res;
-            });
+        return this.ngHttp.get(`http://127.0.0.1:9999/search/${s}/${options[0] || 1}/${options[1] || 10}`);
+        // return this.request(
+        //     `http://music.163.com/api/search/get/`,
+        //     `s=${s}&limit=${((options[1] || 0) + 1) * (options[2] || 15)}&type=${
+        //     options[0] || 1}&offset=0`).map((res) => {
+        //         res.songs.splice(0, (options[1] || 0) * (options[2] || 15));
+        //         return res;
+        //     });
     }
     private request(url, data) {
         return this.http.post_native(
