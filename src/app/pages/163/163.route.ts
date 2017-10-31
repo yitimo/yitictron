@@ -2,7 +2,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { N163Component } from './163.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './search';
+import { MusicComponent } from './music';
 
 const routes: Routes = [
     {
@@ -10,7 +11,8 @@ const routes: Routes = [
         component: N163Component,
         children: [
             { path: '', component: SearchComponent },
-            { path: 'search', component: SearchComponent }
+            { path: 'search', component: SearchComponent },
+            { path: 'music/:id', component: MusicComponent },
         ]
     }
 ];
