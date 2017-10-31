@@ -51,7 +51,7 @@ export class SearchComponent implements OnInit {
 
     public pageChange(e) {
         this.page = e.pageIndex;
-        this.n163.Search(this.words, [this.page]).subscribe((res) => {
+        this.n163.Search(this.words, [this.page + 1, 10]).subscribe((res) => {
             if (res.state) {
                 this.songs = res.data.songs;
                 this.songCount = res.data.songCount;

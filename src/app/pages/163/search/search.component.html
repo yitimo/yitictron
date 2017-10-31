@@ -6,12 +6,12 @@
         <input matInput placeholder="想听点什么？" [(ngModel)]="words" (keyup)="onEnter($event)">
     </mat-input-container>
     <div class="flex-1 flex-y" *ngIf="state !== 'init'">
-        <div class="flex-1 scroll">
-            <div class="flex song">
-                <div class="flex-1">歌曲</div>
-                <div>歌手</div>
-                <div>专辑</div>
-            </div>
+        <div class="flex song title">
+            <div class="flex-1">歌曲</div>
+            <div>歌手</div>
+            <div>专辑</div>
+        </div>
+        <div class="flex-1 scroll-y">
             <div class="flex song" *ngFor="let song of songs">
                 <div class="flex-1">
                     {{song.name}}
@@ -25,7 +25,7 @@
             </div>
         </div>
         <mat-paginator [pageIndex]="page" [length]="songCount"
-            [pageSize]="15"
+            [pageSize]="10"
             (page)="pageChange($event)">
         </mat-paginator>
     </div>

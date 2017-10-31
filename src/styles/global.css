@@ -1,5 +1,6 @@
 html, body, yitictron {
     height: 100%;
+    overflow: hidden;
 }
 html, body, div, ul, li, p {
     margin: 0;padding: 0;
@@ -42,4 +43,10 @@ li{
 {
     border-radius: 6px;
     background-color: #ccc;
+}
+.scroll-y {
+    overflow-y: auto;
+}
+.scroll-x {
+    overflow-x: auto;
 }

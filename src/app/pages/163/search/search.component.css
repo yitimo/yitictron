@@ -1,16 +1,18 @@
 .search-bar{
-    width: 80%;
+    width: 40%;
     padding: 12px 16px;
+    min-width: 100px;
 }
 .search-bar.init{
     position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);
+    width: 80%;
 }
 
 .song{
     border-bottom: 1px solid #ddd;
     padding:  6px 12px;cursor: default;
 }
-.song:first-of-type{
+.song.title{
     border-top: 1px solid #ddd;
     color: #969696;padding: 0 12px;
 }
