@@ -19,27 +19,12 @@ export class N163Service {
         if (!options) {
             options = [];
         }
-        return this.ngHttp.get(`http://127.0.0.1:9999/search/${s}/${options[0] || 1}/${options[1] || 10}`);
-        // return this.request(
-        //     `http://music.163.com/api/search/get/`,
-        //     `s=${s}&limit=${((options[1] || 0) + 1) * (options[2] || 15)}&type=${
-        //     options[0] || 1}&offset=0`).map((res) => {
-        //         res.songs.splice(0, (options[1] || 0) * (options[2] || 15));
-        //         return res;
-        //     });
+        return this.ngHttp.get(`https://api.163.yitimo.com/search/${s}/${options[0] || 1}/${options[1] || 10}`);
     }
-    private request(url, data) {
-        return this.http.post_native(
-            url,
-            data,
-            {
-                headers: {
-                    'Cookie': 'appver=2.0.2',
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Referer': 'http://music.163.com',
-                    'Content-Length': data.length
-                }
-            }
-        );
+    public MusicInfo(id: number): Observable<any> {
+        return this.ngHttp.get(`https://api.163.yitimo.com/info/music/${id}`);
+    }
+    public Download(id: number): Observable<any> {
+        return this.ngHttp.get(`https://api.163.yitimo.com/download/${id}`);
     }
 }

@@ -14,7 +14,7 @@
         <div class="flex-1 scroll-y">
             <div class="flex song" *ngFor="let song of songs">
                 <div class="flex-1">
-                    {{song.name}}
+                    <span [routerLink]="['/163/music', song.id]">{{song.name}}</span>
                     <span class="option">收藏</span>
                     <span class="option">下载</span>
                 </div>

@@ -1,0 +1,8 @@
+<ul *ngIf="musicInfo">
+    <li>{{musicInfo.name}} - {{musicInfo.artists[0].name}} - {{musicInfo.album.name}}</li>
+    <li>
+        <button md-raised-button color="primary" (click)="toggle()">播放/暂停</button>
+        <button md-raised-button color="accent" (click)="stop()">停止</button>
+    </li>
+    <li></li>
+</ul>

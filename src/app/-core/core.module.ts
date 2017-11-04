@@ -7,10 +7,12 @@ import { Http } from './services/http';
 import { WeiboGuard } from './guards/weibo.guard';
 import { HttpClientModule } from '@angular/common/http';
 
+import { PlayerService, Audio } from './services/player';
+
 @NgModule({
     declarations: [],
     imports: [ CommonModule, FormsModule, HttpClientModule ],
     exports: [],
-    providers: [ Http, OAuthWeiboService, ConfigService, WeiboGuard ],
+    providers: [ Http, OAuthWeiboService, ConfigService, WeiboGuard, PlayerService ],
 })
 export class CoreModule {}
