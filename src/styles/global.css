@@ -1,32 +1,16 @@
-html, body, yitictron {
+html, body, musix {
     height: 100%;
-    overflow: hidden;
 }
-html, body, div, ul, li, p {
+html, body, div, ul, li, p, textarea {
     margin: 0;padding: 0;
     box-sizing: border-box;
-    word-break: break-all;
 }
-li{
-    list-style: none;
+a{
+    cursor: default;
+    text-decoration: none;
 }
-.black-f-2{
-    color: #4f4f4f;
-}
-.flex{
-    display: flex;
-    position: relative;
-    width: 100%;
-}
-.flex-y{
-    display: flex;
-    flex-flow: column;
-    position: relative;
-    height: 100%;
-}
-.flex-1{
-    flex: 1;
-    position: relative;
+a:hover{
+    text-decoration: underline;
 }
 ::-webkit-scrollbar
 {
@@ -44,9 +28,64 @@ li{
     border-radius: 6px;
     background-color: #ccc;
 }
-.scroll-y {
-    overflow-y: auto;
+.black-f-2{
+    color: #4f4f4f;
 }
-.scroll-x {
+.flex{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+}
+.flex-y{
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+.flex-1{
+    flex: 1;
+}
+.scroll{
+    overflow: auto;
+}
+.icon{
+    height: 24px;width: 24px;
+}
+
+.article{
+    padding: 24px;
+    color: #666;
+}
+.article h1, .article h2, .article h3, .article h4, .article h5, .article h6{
+    color: #000;
+}
+.article img{
+    max-width: 100%;
+}
+.article p{
+    color: #4f4f4f;
+}
+.article li{
+    color: #000;
+}
+.article a{
+    color: #007acc;
+}
+.article pre {
     overflow-x: auto;
+    padding: 6px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+}
+.center {
+    text-align: center;
+}
+.radius {
+    border-radius: 4px;
+}
+.inline-block {
+    display: inline-block;
 }
