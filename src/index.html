@@ -4,15 +4,27 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yitictron !</title>
-  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+  <title>Musix !</title>
+  <% if (htmlWebpackPlugin.options.metadata.isDevServer) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
 </head>
 <body>
-  <yitictron class="flex">
-    Loading...
+  <yitictron>
+    <style>
+      .loader {
+        position: absolute;top: 25%;left: 50%;
+        margin-left: -50px;margin-top: -50px;
+        height: 100px;width: 100px;background: #6f84e8;
+        animation: spin 2s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+    <div class="loader"></div>
   </yitictron>
 </body>
 </html>

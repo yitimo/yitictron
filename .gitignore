@@ -5,6 +5,3 @@ compiler
 dist
 dll
 .awcache
-qiniu-config
-weibo-config
-weibo-token
