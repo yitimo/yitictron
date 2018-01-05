@@ -1,5 +1,9 @@
 .hello {
-    text-align: center;
-    font-size: 2em;
-    color: #cd5c5c;
+    position: absolute;
+    top: 50%;left: 50%;
+    transform: translate(-50%, -50%);
+}
+.home-body {
+    height: 100%;width: 100%;
+    overflow: hidden;position: relative;
 }
