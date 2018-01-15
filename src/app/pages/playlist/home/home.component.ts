@@ -6,5 +6,5 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomeComponent {
-    // for directly search result
+    // playlist detail
 }

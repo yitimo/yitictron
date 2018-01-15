@@ -6,5 +6,5 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PlaylistComponent {
-    // search result nav
+    // playlist nav
 }
