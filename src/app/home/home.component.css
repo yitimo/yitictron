@@ -1,9 +1,13 @@
+:host {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    display: block;
+}
 .hello {
     position: absolute;
     top: 50%;left: 50%;
     transform: translate(-50%, -50%);
-}
-.home-body {
-    height: 100%;width: 100%;
-    overflow: hidden;position: relative;
 }

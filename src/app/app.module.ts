@@ -12,20 +12,25 @@ import { SharedModule } from './-shared';
 
 import 'hammerjs';
 
+import { NavControlComponent, NavSearchComponent } from './+navigate';
+import { SearchModule, PlaylistModule } from './pages';
+
 @NgModule({
-  bootstrap: [ AppComponent ],
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    SharedModule,
-    CoreModule,
-    NotFoundRoutingModule // 404 page
-  ],
-  entryComponents: []
+    bootstrap: [ AppComponent ],
+    declarations: [
+        AppComponent, HomeComponent,
+        NavControlComponent, NavSearchComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        CoreModule,
+        SearchModule,
+        PlaylistModule,
+        NotFoundRoutingModule // 404 page
+    ],
+    entryComponents: []
 })
 export class AppModule {}

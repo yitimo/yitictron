@@ -113,3 +113,19 @@ html, body, musix {
 .x-big {
     font-size: $font_xl;
 }
+
+.border-0 {
+    border: 1px solid $gray_xs;
+}
+.border-1 {
+    border-top: 1px solid $gray_xs;
+}
+.border-2 {
+    border-right: 1px solid $gray_xs;
+}
+.border-3 {
+    border-bottom: 1px solid $gray_xs;
+}
+.border-4 {
+    border-left: 1px solid $gray_xs;
+}

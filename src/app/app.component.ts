@@ -1,13 +1,16 @@
 import {
-  Component,
-  OnInit,
-  ViewEncapsulation
+    Component,
+    OnInit,
+    ViewEncapsulation,
+    HostBinding
 } from '@angular/core';
 
 @Component({
-  selector: 'musix',
-  encapsulation: ViewEncapsulation.None,
-  templateUrl: `./app.component.html`,
-  styleUrls: [`./app.component.css`]
+    selector: 'musix',
+    encapsulation: ViewEncapsulation.None,
+    templateUrl: `./app.component.html`,
+    styleUrls: [`./app.component.css`]
 })
-export class AppComponent {}
+export class AppComponent {
+    @HostBinding('class.flex-y') public flexC: boolean = true;
+}
