@@ -1,9 +1,16 @@
 html, body, musix {
     height: 100%;
 }
-html, body, div, ul, li, p, textarea {
+html, body, div, ul, li, p, textarea, input {
     margin: 0;padding: 0;
     box-sizing: border-box;
+}
+ul {
+    list-style: none;
+}
+input, textarea {
+    outline: none;
+    border: none;
 }
 a{
     cursor: default;
@@ -53,6 +60,7 @@ a:hover{
 }
 .icon{
     height: 24px;width: 24px;
+    vertical-align: middle;
 }
 
 .article{

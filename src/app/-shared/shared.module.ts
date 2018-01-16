@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IconDirective } from './directives/icon.directive';
 
 @NgModule({
-    declarations: [],
+    declarations: [IconDirective],
     imports: [
         CommonModule
     ],
     exports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        IconDirective
     ],
     providers: [],
     entryComponents: []
