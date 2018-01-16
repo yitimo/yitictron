@@ -8,6 +8,9 @@
     color: #969696;
     width: 100%;
 }
+#musix-search-bar::-webkit-input-placeholder {
+    color: #969696;
+}
 #musix-search-bar.active {
     background: #f6f6f6;
     color: #4f4f4f;
