@@ -1,6 +1,6 @@
 {
   "name": "musix",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "yitimo's electron app",
   "main": "main.js",
   "license": "MIT",
