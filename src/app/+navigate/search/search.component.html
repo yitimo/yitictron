@@ -1,5 +1,7 @@
-<input type="text" id="musix-search-bar" maxlength="20" placeholder="想听点什么?" [ngClass]="{active: inputActive}" class="padding" (keyup)="onKeyup($event)" />
-<ul class="histories mini padding-x" [ngClass]="{active: historyActive}">
-    <li *ngFor="let item of history; let i = index" class="flex  padding"><div class="flex-1">{{item}}</div><img class="icon" icon="close" /></li>
+<input type="text" id="musix-search-bar" maxlength="20" placeholder="想听点什么?"
+[ngClass]="{active: inputActive}" class="padding" (keyup)="onKeyup($event)"
+[(ngModel)]="words" />
+<ul class="histories mini padding-x" [ngClass]="{active: historyActive}" *ngIf="histories?.length">
+    <li *ngFor="let item of histories; let i = index" class="flex padding"><div class="flex-1">{{item}}</div><img class="icon" icon="close" /></li>
     <li class="padding-s-y">清空搜索历史</li>
 </ul>

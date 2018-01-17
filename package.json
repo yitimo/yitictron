@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "test": "ng serve",
+    "test": "ng serve --port 3001",
     "build": "ng build --prod",
     "native": "npm run build && electron .",
     "asar": "asar pack musix app.asar",
