@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HistoryService } from './services/history';
 import { Interceptor } from './services/interceptor';
+import { GlobalService } from './services/global';
 
 @NgModule({
     declarations: [],
@@ -10,6 +11,7 @@ import { Interceptor } from './services/interceptor';
     exports: [],
     providers: [
         HistoryService,
+        GlobalService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: Interceptor,

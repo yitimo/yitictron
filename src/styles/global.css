@@ -8,9 +8,18 @@ html, body, div, ul, li, p, textarea, input {
 ul {
     list-style: none;
 }
-input, textarea {
+input, textarea, select, option {
     outline: none;
     border: none;
+}
+select {
+    background: #ffffff;
+    color: #4f4f4f;
+    cursor: pointer;
+    padding: 6px 12px;
+}
+select:hover {
+    background: #f6f6f6;
 }
 a{
     cursor: default;

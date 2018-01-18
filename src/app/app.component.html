@@ -1,8 +1,11 @@
 <div class="border-3 big">
     <nav-search></nav-search>
 </div>
-<div class="flex-1">
-    <router-outlet></router-outlet>
+<div class="flex-1 flex">
+    <nav-left class="sidemenu"></nav-left>
+    <div class="flex-1">
+        <router-outlet></router-outlet>
+    </div>
 </div>
 <div class="padding border-1 big">bottom</div>
 <router-outlet name="player"></router-outlet>

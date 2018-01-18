@@ -1,7 +1,3 @@
-:host {
-    display: block;
-    position: relative;
-}
 #musix-search-bar {
     background: #ffffff;
     transition: 0.2s;
@@ -29,3 +25,6 @@
 .histories.active {
     opacity: 1;
 }
+/* #musix-stype {
+    
+} */

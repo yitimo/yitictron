@@ -12,14 +12,14 @@ import { SharedModule } from './-shared';
 
 import 'hammerjs';
 
-import { NavControlComponent, NavSearchComponent } from './+navigate';
+import { NavControlComponent, NavSearchComponent, NavLeftComponent } from './+navigate';
 import { SearchModule, PlaylistModule } from './pages';
 
 @NgModule({
     bootstrap: [ AppComponent ],
     declarations: [
         AppComponent, HomeComponent,
-        NavControlComponent, NavSearchComponent
+        NavControlComponent, NavSearchComponent, NavLeftComponent
     ],
     imports: [
         BrowserModule,

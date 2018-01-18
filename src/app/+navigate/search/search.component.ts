@@ -17,6 +17,7 @@ import { Observable } from 'rxjs/Observable';
 export class NavSearchComponent implements AfterContentInit {
     @Output() public enter: EventEmitter<string> = new EventEmitter<string>();
     @HostBinding('style.overflow') public overflowS: string = 'hidden';
+    @HostBinding('class.flex') public flexC: boolean = true;
     public inputActive: boolean = false;
     public historyActive: boolean = false;
     public chosenHistory: number;
@@ -52,6 +53,15 @@ export class NavSearchComponent implements AfterContentInit {
             default:
             break;
         }
+    }
+    /**
+     * use to change seatch type, and update bar in search result pages when directly entered
+     * @param type search type
+     * @param words serach words
+     */
+    public updateBar(type: 'song' | 'album' | 'artist', words?: string) {
+        this.stype = type;
+        this.words = words || this.words;
     }
     public ngAfterContentInit() {
         // get history

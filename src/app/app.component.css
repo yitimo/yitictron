@@ -3,3 +3,8 @@ nav-search {
     width: 100%;
     max-width: 512px;
 }
+nav-left {
+    width: 15%;
+    max-width: 256px;
+    min-width: 128px;
+}
