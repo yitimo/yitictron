@@ -8,7 +8,7 @@ html, body, div, ul, li, p, textarea, input {
 ul {
     list-style: none;
 }
-input, textarea, select, option {
+input, textarea, select {
     outline: none;
     border: none;
 }
@@ -99,6 +99,9 @@ a:hover{
 }
 .center {
     text-align: center;
+}
+.right {
+    text-align: right;
 }
 .radius {
     border-radius: 4px;

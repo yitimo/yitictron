@@ -1,1 +1,8 @@
-artist search result
+<div class="padding gray-f border-3">
+    搜索关键词为 <span class="primary-f">{{words}}</span> , 
+    共有 <span class="primary-f">{{artistCount}}</span> 条结果
+</div>
+<div class="artist margin-s" [title]="artist.name" *ngFor="let artist of artists">
+    <img src="{{artist.img1v1Url}}" />
+    <div class="padding-s">{{artist.name | limit: 7}}</div>
+</div>

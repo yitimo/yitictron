@@ -1,0 +1,17 @@
+.artist {
+    display: inline-block;
+    overflow: hidden;
+    width: 128px;
+    line-height: 15px;
+    white-space: nowrap;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+.artist > img{
+    display: block;
+    height: 128px;
+    width: 128px;
+    border-radius: 4px;
+}

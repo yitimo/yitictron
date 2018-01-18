@@ -30,8 +30,8 @@ export class AlbumComponent implements OnInit {
         }
         this.search.Album(this.words).subscribe((res) => {
             console.log(res);
-            // this.artists = res.songs;
-            // this.songCount = res.songCount;
+            this.albums = res.albums;
+            this.albumCount = res.albumCount;
         }, (err) => {
             console.log(err);
         });

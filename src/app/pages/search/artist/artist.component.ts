@@ -30,8 +30,8 @@ export class ArtistComponent implements OnInit {
         }
         this.search.Artist(this.words).subscribe((res) => {
             console.log(res);
-            // this.artists = res.songs;
-            // this.songCount = res.songCount;
+            this.artists = res.artists;
+            this.artistCount = res.artistCount;
         }, (err) => {
             console.log(err);
         });

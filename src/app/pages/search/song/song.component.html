@@ -1,1 +1,15 @@
-song search result
+<div class="padding gray-f">
+    搜索关键词为 <span class="primary-f">{{words}}</span> , 
+    共有 <span class="primary-f">{{songCount}}</span> 条结果
+</div>
+
+<ul class="padding-x border-1">
+    <li title="点击跳转到歌曲详情" class="padding-s-y border-3 flex item" *ngFor="let song of songs; let i=index">
+        <div class="padding-x dark-f no">{{i * page + 1}}</div>
+        <div class="flex-1">
+            {{song.name}}
+            <span class="gray-f padding-x">{{song.artists | artist | limit}}</span>
+        </div>
+        <div class="padding-x gray-f">{{song.album?.name | limit: 15}}</div>
+    </li>
+</ul>
