@@ -3,7 +3,7 @@ import { SharedModule } from '../../-shared';
 
 import { SearchRoutingModule } from './search.route';
 import { SearchComponent } from './search.component';
-import { HomeComponent } from './home/home.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 import { SongComponent } from './song/song.component';
 import { AlbumComponent } from './album/album.component';
 import { ArtistComponent } from './artist/artist.component';
@@ -13,7 +13,7 @@ import { SearchService } from './search.service';
     imports: [SharedModule, SearchRoutingModule],
     exports: [],
     declarations: [
-        SearchComponent, HomeComponent,
+        SearchComponent, PlaylistComponent,
         SongComponent, AlbumComponent, ArtistComponent
     ],
     providers: [SearchService],

@@ -5,6 +5,9 @@ html, body, div, ul, li, p, textarea, input {
     margin: 0;padding: 0;
     box-sizing: border-box;
 }
+*:focus {
+    outline: none;
+}
 ul {
     list-style: none;
 }
@@ -70,6 +73,11 @@ a:hover{
 .icon{
     height: 24px;width: 24px;
     vertical-align: middle;
+}
+.icon-s {
+    height: 16px; width: 16px;
+    vertical-align: middle;
+    margin-bottom: 2px;
 }
 
 .article{

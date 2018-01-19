@@ -1,9 +1,9 @@
-<div class="padding gray-f">
+<div class="padding gray-f border-3">
     搜索关键词为 <span class="primary-f">{{words}}</span> , 
     共有 <span class="primary-f">{{albumCount}}</span> 条结果
 </div>
 
-<ul class="padding-x border-1">
+<ul class="padding-x">
     <li title="点击跳转到专辑详情" class="padding-s-y border-3 flex item" *ngFor="let album of albums; let i=index">
         <div class="padding-x dark-f no">{{i * page + 1}}</div>
         <img src="{{album.picUrl}}" />

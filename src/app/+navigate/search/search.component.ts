@@ -22,7 +22,7 @@ export class NavSearchComponent implements AfterContentInit {
     public historyActive: boolean = false;
     public chosenHistory: number;
     public histories: any[];
-    public stype: 'song' | 'album' | 'artist';
+    public stype: 'song' | 'album' | 'artist' | 'playlist';
     public words: string; // input bind
     constructor(
         private history: HistoryService,
@@ -59,7 +59,7 @@ export class NavSearchComponent implements AfterContentInit {
      * @param type search type
      * @param words serach words
      */
-    public updateBar(type: 'song' | 'album' | 'artist', words?: string) {
+    public updateBar(type: 'song' | 'album' | 'artist' | 'playlist', words?: string) {
         this.stype = type;
         this.words = words || this.words;
     }
