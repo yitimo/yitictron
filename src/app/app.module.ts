@@ -13,7 +13,10 @@ import { SharedModule } from './-shared';
 import 'hammerjs';
 
 import { NavControlComponent, NavSearchComponent, NavLeftComponent } from './+navigate';
-import { SearchModule, PlaylistModule } from './pages';
+import {
+    SearchModule, PlaylistModule, ArtistModule, SongModule,
+    AlbumModule, ToplistModule, DjradioModule
+} from './pages';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -22,13 +25,11 @@ import { SearchModule, PlaylistModule } from './pages';
         NavControlComponent, NavSearchComponent, NavLeftComponent
     ],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        SharedModule,
-        CoreModule,
-        SearchModule,
-        PlaylistModule,
+        BrowserModule, BrowserAnimationsModule,
+        AppRoutingModule, SharedModule, CoreModule,
+        SearchModule, PlaylistModule,
+        ArtistModule, SongModule, AlbumModule,
+        ToplistModule, DjradioModule,
         NotFoundRoutingModule // 404 page
     ],
     entryComponents: []
