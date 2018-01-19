@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../search.service';
 
@@ -8,30 +8,35 @@ import { SearchService } from '../search.service';
 })
 
 export class ArtistComponent implements OnInit {
-    public artists: any[];
-    public artistCount: number;
-    public page: number;
-    public limit: number;
+    @HostBinding('class.flex-y') public flexC: boolean = true;
+    public loading: boolean = false;
+    public artists: any[] = [];
+    public artistCount: number = 0;
+    public page: number = 1;
+    public limit: number = 10;
     private words: string;
     constructor(
         private search: SearchService,
         private aRoute: ActivatedRoute
-    ) {
-        this.page = 1;
-        this.limit = 10;
-        this.artistCount = 0;
-        this.artists = [];
-    }
+    ) {}
     public ngOnInit() {
         this.words = this.aRoute.snapshot.params['words'];
         if (!this.words || !this.words.length) {
             console.log('no words to search');
             return;
         }
-        this.search.Artist(this.words).subscribe((res) => {
-            console.log(res);
+        this.doPagination(1);
+    }
+    public doPagination(page: number) {
+        if (this.loading) {
+            return;
+        }
+        this.loading = true;
+        this.search.Artist(this.words, page).subscribe((res) => {
+            this.page = page;
             this.artists = res.artists;
             this.artistCount = res.artistCount;
+            this.loading = false;
         }, (err) => {
             console.log(err);
         });

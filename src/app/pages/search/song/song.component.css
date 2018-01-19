@@ -13,3 +13,6 @@
 .item > div {
     overflow: hidden;
 }
+pagination {
+    width: 100%;
+}

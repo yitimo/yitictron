@@ -16,3 +16,6 @@
 .item > img {
     height: 64px;width: 64px;
 }
+pagination {
+    width: 100%;
+}

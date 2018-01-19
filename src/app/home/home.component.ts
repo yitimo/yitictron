@@ -5,5 +5,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
-    //
+    public switch($event) {
+        console.log($event);
+    }
 }
