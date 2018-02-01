@@ -1,1 +1,7 @@
-home
+<div class="playlist-item flex padding-s" *ngFor="let playlist of playlists">
+    <img src="{{playlist.coverImgUrl}}" />
+    <div class="flex-1 padding-x">
+        {{playlist.name}}
+        <div class="gray-f">{{playlist.description}}</div>
+    </div>
+</div>

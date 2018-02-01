@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../../-shared';
+
+import { PLaylistService } from './playlist.service';
 
 import { PlaylistRoutingModule } from './playlist.route';
 import { PlaylistComponent } from './playlist.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-    imports: [PlaylistRoutingModule],
+    imports: [SharedModule, PlaylistRoutingModule],
     exports: [],
     declarations: [PlaylistComponent, HomeComponent],
-    providers: [],
+    providers: [PLaylistService],
 })
 export class PlaylistModule { }
 

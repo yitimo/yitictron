@@ -1,1 +1,4 @@
-home
+<div *ngFor="let artist of artists;let i = index" class="artist-item">
+    <img src="{{artist.picUrl}}" />
+    <div>No.{{i + 1}} | {{artist.name}}</div>
+</div>

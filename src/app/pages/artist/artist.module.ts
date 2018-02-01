@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../../-shared';
 
 import { ArtistService } from './artist.service';
 
@@ -7,7 +8,7 @@ import { ArtistComponent } from './artist.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-    imports: [ArtistRoutingModule],
+    imports: [SharedModule, ArtistRoutingModule],
     exports: [],
     declarations: [ArtistComponent, HomeComponent],
     providers: [ArtistService],

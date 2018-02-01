@@ -3,15 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { GlobalService } from '../../-core';
 
-// tslint:disable:max-line-length
 @Injectable()
-export class ArtistService {
+export class PLaylistService {
     constructor(
         private http: HttpClient,
         private global: GlobalService
-    ) {}
-    public Top(page: number, limit: number): Observable<any> {
-        return this.http.get(`${this.global.apiDomain}/artist/top/${page}/${limit}`)
-            .map((res: any) => res.artists);
+    ) {
+        //
+    }
+    public All(page: number, limit: number): Observable<any> {
+        return this.http.get(`${this.global.apiDomain}/playlist/全部/hot/${page}/${limit}`);
     }
 }

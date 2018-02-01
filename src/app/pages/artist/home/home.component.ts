@@ -7,12 +7,14 @@ import { ArtistService } from '../artist.service';
 })
 
 export class HomeComponent implements OnInit {
+    public artists: any[];
     constructor(
         private artist: ArtistService
     ) {}
     public ngOnInit() {
-        this.artist.Top(1, 5).subscribe((res) => {
+        this.artist.Top(1, 50).subscribe((res) => {
             console.log(res);
+            this.artists = res;
         }, (err) => {
             console.log(err);
         });

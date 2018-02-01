@@ -1,0 +1,7 @@
+.playlist-item > img {
+    height: 80px;
+    width: 80px;
+}
+.playlist-item:not(:first-of-type) {
+    border-top: 1px solid #ddd;
+}
