@@ -1,4 +1,4 @@
-.playlist-item > img {
+.playlist-item .cover {
     height: 80px;
     width: 80px;
 }
