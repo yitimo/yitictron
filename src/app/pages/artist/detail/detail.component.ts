@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistService } from '../artist.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class DetailComponent implements OnInit {
 
     constructor(
         private aRoute: ActivatedRoute,
+        private router: Router,
         private artist: ArtistService
     ) {
         this.id = 0;
@@ -30,5 +31,8 @@ export class DetailComponent implements OnInit {
         }, (err) => {
             console.log(err);
         });
+    }
+    public albums(id: number) {
+        this.router.navigate(['/artist/album', id]);
     }
 }

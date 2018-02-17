@@ -3,8 +3,8 @@
     position: relative;
     width: 150px;
     height: 150px;
-    border-radius: 100%;
     overflow: hidden;
+    border-radius: 100%;
 }
 .cover img {
     width: 100%;
@@ -20,6 +20,20 @@
     bottom: 0;
     left: 50%;
     margin-left: -100px;
+}
+.album {
+    padding: 4px 8px;
+    width: fit-content;
+    margin: 15px auto;
+    color: #cd5c5c;
+    border-radius: 4px;
+    border: 1px solid #cd5c5c;
+}
+.album:hover {
+    background: rgba(205, 92, 92, 0.2);
+}
+.album:active {
+    background: rgba(205, 92, 92, 0.3);
 }
 .info {
     margin-left: 15px;
