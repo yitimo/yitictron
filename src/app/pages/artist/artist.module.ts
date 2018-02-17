@@ -6,11 +6,12 @@ import { ArtistService } from './artist.service';
 import { ArtistRoutingModule } from './artist.route';
 import { ArtistComponent } from './artist.component';
 import { HomeComponent } from './home/home.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
     imports: [SharedModule, ArtistRoutingModule],
     exports: [],
-    declarations: [ArtistComponent, HomeComponent],
+    declarations: [ArtistComponent, HomeComponent, DetailComponent],
     providers: [ArtistService],
 })
 export class ArtistModule { }

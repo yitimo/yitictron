@@ -1,15 +1,21 @@
 .artist-item {
     display: inline-block;
-    width: 24%;margin-top: 15px;
-    margin-left: 1%;
+    width: 22%;margin: 8px;
+    padding: 8px;
+    min-width: 100px;
     text-align: center;
     overflow: hidden;
     color: #666666;
-    vertical-align: middle;
+    vertical-align: top;
     transition: 0.2s;
+    border-radius: 4px;
 }
 .artist-item:hover {
     color: #000000;
+    background: #f3f3f3;
+}
+.artist-item:active {
+    background: #eeeeee;
 }
 .artist-item > img {
     width: 90%;

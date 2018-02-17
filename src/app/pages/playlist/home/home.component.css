@@ -1,5 +1,12 @@
 .playlist-item {
+    transition: 0.2s;
     min-height: 92px;
+}
+.playlist-item:hover {
+    background: #f3f3f3;
+}
+.playlist-item:active {
+    background: #eeeeee;
 }
 .playlist-item .cover {
     height: 74px;
@@ -9,4 +16,11 @@
 }
 .playlist-item:not(:first-of-type) {
     border-top: 1px solid #ddd;
+}
+.more {
+    padding: 15px;
+    color: #969696;
+}
+.more:active {
+    background: #eeeeee;
 }

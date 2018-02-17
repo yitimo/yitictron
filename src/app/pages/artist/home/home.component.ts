@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ArtistService } from '../artist.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { ArtistService } from '../artist.service';
 export class HomeComponent implements OnInit {
     public artists: any[];
     constructor(
-        private artist: ArtistService
+        private artist: ArtistService,
+        private router: Router
     ) {}
     public ngOnInit() {
         this.artist.Top(1, 50).subscribe((res) => {
@@ -18,5 +20,8 @@ export class HomeComponent implements OnInit {
         }, (err) => {
             console.log(err);
         });
+    }
+    public detail(id: number) {
+        this.router.navigate(['/artist/detail', id]);
     }
 }

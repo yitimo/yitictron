@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ArtistComponent } from './artist.component';
 import { HomeComponent } from './home/home.component';
+import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [
     {
@@ -11,6 +12,7 @@ const routes: Routes = [
         children: [
             { path: '', component: HomeComponent },
             { path: 'home', component: HomeComponent },
+            { path: 'detail/:id', component: DetailComponent },
             { path: '**', component: HomeComponent }
         ]
     },
