@@ -14,6 +14,10 @@ export class HomeComponent implements OnInit {
         private router: Router
     ) {}
     public ngOnInit() {
+        if (this.artist.top) {
+            this.artists = this.artist.top;
+            return;
+        }
         this.artist.Top(1, 50).subscribe((res) => {
             console.log(res);
             this.artists = res;

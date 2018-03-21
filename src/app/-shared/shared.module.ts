@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material';
 import { IconDirective } from './directives/icon.directive';
 import { ArtistPipe } from './pipes/artist.pipe';
 import { LimitPipe } from './pipes/limit.pipe';
@@ -13,7 +14,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
         TimestampPipe, PaginationComponent
     ],
     imports: [
-        CommonModule
+        CommonModule, MatTooltipModule
     ],
     exports: [
         CommonModule,
@@ -22,7 +23,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
         ArtistPipe,
         LimitPipe,
         TimestampPipe,
-        PaginationComponent
+        PaginationComponent,
+        MatTooltipModule
     ],
     providers: [],
     entryComponents: []

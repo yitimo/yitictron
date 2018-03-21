@@ -1,29 +1,25 @@
-.artist-item {
+.artists > div {
     display: inline-block;
-    width: 22%;margin: 8px;
-    padding: 8px;
-    min-width: 100px;
+    width: 20%;
     text-align: center;
     overflow: hidden;
     color: #666666;
     vertical-align: top;
     transition: 0.2s;
-    border-radius: 4px;
+    position: relative;
 }
-.artist-item:hover {
-    color: #000000;
-    background: #f3f3f3;
+.artists > div:hover, .artist-item:active {
+    transform: scale(1.1);
+    z-index: 1;
+    box-shadow: 0 0 10px #4f4f4f;
 }
-.artist-item:active {
-    background: #eeeeee;
-}
-.artist-item > img {
-    width: 90%;
+.artists > div > img {
+    width: 100%;
     display: block;
-    margin: 0 auto;
-    max-width: 150px;
+    /* margin: 0 auto;
+    max-width: 150px; */
 }
-.artist-item > div {
+/* .artist-item > div {
     line-height: 35px;
     white-space: nowrap;
-}
+} */
