@@ -38,6 +38,8 @@
 .info {
     margin-left: 15px;
     font-size: 14px;color: #4f4f4f;
+    max-height: 150px;
+    overflow-y: auto;
 }
 .song:hover {
     background: #f3f3f3;
