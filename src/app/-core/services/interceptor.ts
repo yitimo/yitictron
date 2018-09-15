@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 // tslint:disable:no-bitwise
 @Injectable()
@@ -14,7 +14,7 @@ export class Interceptor implements HttpInterceptor {
             .set('Content-Type',
             req.method.toUpperCase() === 'POST' ? 'application/x-www-form-urlencoded; charset=UTF-8' : 'application/json');
         const authReq = req.clone({ headers });
-        return next.handle(authReq).map((event) => {
+        return next.handle(authReq).pipe(map((event) => {
             if (event instanceof HttpResponse) {
                 switch (event.status) {
                     case 200:
@@ -29,7 +29,7 @@ export class Interceptor implements HttpInterceptor {
                 }
             }
             return event;
-        });
+        }));
     }
 
     private base64Encode(source: string): string {

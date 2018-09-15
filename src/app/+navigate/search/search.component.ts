@@ -1,13 +1,9 @@
 import {
-    Component, EventEmitter, Output, Input,
-    AfterContentInit, HostListener, HostBinding, ContentChild,
-    ElementRef
+    Component, EventEmitter, Output,
+    AfterContentInit, HostBinding
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { trigger, transition, style, state, animate } from '@angular/animations';
-
 import { HistoryService } from '../../-core';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'nav-search',
