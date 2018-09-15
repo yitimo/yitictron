@@ -13,7 +13,9 @@ function createWindow () {
     height: 600,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    frame: false,
+    resizable: true
   })
 
   // 加载应用的 index.html。
