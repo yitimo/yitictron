@@ -1,19 +1,27 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
+    "target": "ES5",
+    "module": "ESNext",
     "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
     "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "types": [
+      "jest",
+      "./typings"
     ],
     "lib": [
-      "es2017",
-      "dom"
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src.backup"
+  ]
 }
