@@ -1,16 +1,15 @@
 # Musix
-The progress management is at [here](https://github.com/yitimo/musix/projects/1).
 
-## What I will have
-* Music
-    * Search
-    * Info
-    * Play
-* Artist
-    * Toplist
-    * Search
-* Album
-    * Search
-* Playlist
-    * 163 Playlist
-    * Locally playlist
+**web music support**
+
+Music file in mp3、aac、flac from a web url.
+
+- [x] electron end
+- [x] web end
+
+**file music support**
+
+Music file in mp3、aac、flac from local file system.
+
+- [x] electron end
+- [ ] web end

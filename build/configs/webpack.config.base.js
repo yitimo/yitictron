@@ -1,6 +1,7 @@
 const path = require('path')
 const webpackMerge = require('webpack-merge').merge
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 /** @type {import('webpack').Configuration} */
 const config = webpackMerge({
@@ -45,6 +46,20 @@ const config = webpackMerge({
       template: 'pages/template.html',
       filename: 'player.html',
       inject: 'body',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../../public'),
+          to: 'static',
+          filter(name) {
+            if (name.endsWith('.gitkeep')) {
+              return false
+            }
+            return true
+          },
+        },
+      ],
     }),
   ],
   devServer: {
